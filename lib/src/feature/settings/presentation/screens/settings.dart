@@ -4,10 +4,18 @@ import 'package:books_app/src/core/widgets/bottom_button.dart';
 import 'package:books_app/src/feature/settings/presentation/widgets/settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  final InAppReview inAppReview = InAppReview.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +63,11 @@ class SettingsScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 20.h),
                 child: BottomButtonWidget(
                   buttonText: 'Оценить приложение',
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (await inAppReview.isAvailable()) {
+                      await inAppReview.requestReview();
+                    }
+                  },
                 ),
               ),
             ],
