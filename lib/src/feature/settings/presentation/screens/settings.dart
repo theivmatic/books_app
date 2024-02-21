@@ -26,6 +26,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
           style: TextStyles.appbarTitleText,
         ),
         centerTitle: false,
+        elevation: 5,
+        shadowColor: AppColors.elevButtnShadow,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            20,
+          ),
+        ),
       ),
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(

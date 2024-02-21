@@ -55,31 +55,31 @@ class _NavigationState extends State<Navigation> {
             icon: ImageIcon(
               AssetImage('assets/icons/navbar/book.png'),
             ),
-            label: 'Библиотека',
+            label: 'Библиотека\n',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/navbar/eyeglasses.png'),
             ),
-            label: 'Открытые книги',
+            label: 'Открытые\n    книги',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/navbar/bookmark.png'),
             ),
-            label: 'Прочитать в будущем',
+            label: 'Прочитать\nв будущем',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/navbar/lightbulb.png'),
             ),
-            label: 'О книгах',
+            label: 'О книгах\n',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage('assets/icons/navbar/gearshape.png'),
             ),
-            label: 'Настройки',
+            label: 'Настройки\n',
           ),
         ],
       ),
