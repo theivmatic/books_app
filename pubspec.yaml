@@ -21,6 +21,9 @@ dependencies:
   url_launcher: ^6.2.4
   in_app_review: ^2.0.8
 
+  #Fonts
+  google_fonts: ^6.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

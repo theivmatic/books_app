@@ -1,3 +1,4 @@
+import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/about_books/presentation/screens/about_books.dart';
 import 'package:books_app/src/feature/library/presentation/screens/library.dart';
 import 'package:books_app/src/feature/opened_books/presentation/screens/opened_books.dart';
@@ -29,7 +30,6 @@ class _NavigationState extends State<Navigation> {
     return Scaffold(
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        iconSize: 24.h,
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: (index) {
@@ -38,7 +38,18 @@ class _NavigationState extends State<Navigation> {
           });
         },
         elevation: 0,
+
+        //Label style
+        iconSize: 24.h,
+        selectedFontSize: 10.sp,
+        unselectedFontSize: 10.sp,
+        selectedItemColor: AppColors.yellow,
+        unselectedItemColor: AppColors.grey,
+        selectedLabelStyle: TextStyles.navBarLabelText,
+        unselectedLabelStyle: TextStyles.navBarLabelText,
         showUnselectedLabels: true,
+
+        //Items
         items: const [
           BottomNavigationBarItem(
             icon: ImageIcon(
