@@ -1,3 +1,4 @@
+import 'package:books_app/src/feature/settings/presentation/widgets/settings_tile.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -5,9 +6,14 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Settings'),
+    return Scaffold(
+      body: Column(
+        children: [
+          SettingsTileWidget(
+            tileText: 'Политика конфиденциальности',
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }
