@@ -35,6 +35,12 @@ dev_dependencies:
 
   #Icons
   flutter_launcher_icons: ^0.13.1
+  
+flutter_launcher_icons:
+  android: false
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icons/app_icon/launcher_icon.png"
 
 flutter:
   uses-material-design: true
@@ -43,3 +49,4 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/icons/navbar/
+    - assets/icons/app_icon/
