@@ -14,44 +14,49 @@ class SettingsTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ButtonStyle(
-        elevation: const MaterialStatePropertyAll(
-          5,
-        ),
-        shadowColor: const MaterialStatePropertyAll(
-          AppColors.elevButtnShadow,
-        ),
-        fixedSize: MaterialStatePropertyAll(
-          Size(
-            350.w,
-            60.h,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: 10.h,
+      ),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          elevation: const MaterialStatePropertyAll(
+            5,
           ),
-        ),
-        backgroundColor: const MaterialStatePropertyAll(
-          AppColors.white,
-        ),
-        shape: MaterialStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              20,
+          shadowColor: const MaterialStatePropertyAll(
+            AppColors.elevButtnShadow,
+          ),
+          fixedSize: MaterialStatePropertyAll(
+            Size(
+              350.w,
+              60.h,
+            ),
+          ),
+          backgroundColor: const MaterialStatePropertyAll(
+            AppColors.white,
+          ),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                20,
+              ),
             ),
           ),
         ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            tileText,
-            style: TextStyles.settingTileText,
-          ),
-          const Icon(
-            Icons.arrow_forward_ios,
-            color: AppColors.yellow,
-          ),
-        ],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              tileText,
+              style: TextStyles.settingTileText,
+            ),
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: AppColors.yellow,
+            ),
+          ],
+        ),
       ),
     );
   }

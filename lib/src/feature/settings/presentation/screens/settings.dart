@@ -26,6 +26,9 @@ class SettingsScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
+              SizedBox(
+                height: 20.h,
+              ),
               SettingsTileWidget(
                 tileText: 'Политика конфиденциальности',
                 onPressed: () {
@@ -34,9 +37,6 @@ class SettingsScreen extends StatelessWidget {
                     mode: LaunchMode.externalApplication,
                   );
                 },
-              ),
-              SizedBox(
-                height: 20.h,
               ),
               SettingsTileWidget(
                 tileText: 'Пользовательское соглашение',
