@@ -1,5 +1,6 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/constants/urls.dart';
+import 'package:books_app/src/core/widgets/bottom_button.dart';
 import 'package:books_app/src/feature/settings/presentation/widgets/settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,6 +47,16 @@ class SettingsScreen extends StatelessWidget {
                     mode: LaunchMode.externalApplication,
                   );
                 },
+              ),
+              const Expanded(
+                child: SizedBox(),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 20.h),
+                child: BottomButtonWidget(
+                  buttonText: 'Оценить приложение',
+                  onPressed: () {},
+                ),
               ),
             ],
           ),

@@ -35,4 +35,11 @@ abstract class TextStyles {
       color: AppColors.black,
     ),
   );
+  static final bottomButtonText = font(
+    textStyle: const TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 16,
+      color: AppColors.white,
+    ),
+  );
 }
