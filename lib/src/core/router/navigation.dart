@@ -39,7 +39,38 @@ class _NavigationState extends State<Navigation> {
         },
         elevation: 0,
         showUnselectedLabels: true,
-        items: const [],
+        items: const [
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/book.png'),
+            ),
+            label: 'Библиотека',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/eyeglasses.png'),
+            ),
+            label: 'Открытые книги',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/bookmark.png'),
+            ),
+            label: 'Прочитать в будущем',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/lightbulb.png'),
+            ),
+            label: 'О книгах',
+          ),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/icons/gearshape.png'),
+            ),
+            label: 'Настройки',
+          ),
+        ],
       ),
     );
   }
