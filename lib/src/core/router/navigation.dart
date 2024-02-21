@@ -2,7 +2,7 @@ import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/about_books/presentation/screens/about_books.dart';
 import 'package:books_app/src/feature/library/presentation/screens/library.dart';
 import 'package:books_app/src/feature/opened_books/presentation/screens/opened_books.dart';
-import 'package:books_app/src/feature/settings/presentation/screens/about_books.dart';
+import 'package:books_app/src/feature/settings/presentation/screens/settings.dart';
 import 'package:books_app/src/feature/will_read/presentation/screens/will_read.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
