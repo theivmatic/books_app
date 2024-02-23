@@ -21,10 +21,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Настройки',
-          style: TextStyles.appbarTitleText,
-        ),
+        title: const Text('Настройки'),
+        titleSpacing: 20.w,
+        titleTextStyle: TextStyles.appbarTitleText,
         centerTitle: false,
         elevation: 5,
         shadowColor: AppColors.elevButtnShadow,
