@@ -147,7 +147,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                                 _pageBookmark.text.isNotEmpty) {
                               context.read<CardBloc>().add(
                                     AddCardEvent(
-                                      imagePath: 'assets/images/splash_image.png',
+                                      imagePath:
+                                          'assets/images/splash_image.png',
                                       title: _title.text,
                                       author: _author.text,
                                       genre: _genre.text,
@@ -158,6 +159,9 @@ class _AddCardScreenState extends State<AddCardScreen> {
                                       pageBookmark: _pageBookmark.text,
                                       comment: _comment.text,
                                     ),
+                                  );
+                              context.read<CardBloc>().add(
+                                    const FetchCardsEvent(),
                                   );
                               Navigator.of(context).pop(
                                 MaterialPageRoute<dynamic>(
