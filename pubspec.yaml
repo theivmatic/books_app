@@ -13,6 +13,10 @@ dependencies:
   #State managment
   flutter_bloc: ^8.1.3
 
+  #Database
+  sqflite: ^2.3.0
+  path: ^1.8.3
+
   #Adaptive UI
   flutter_screenutil: ^5.9.0
   device_preview: ^1.1.0
