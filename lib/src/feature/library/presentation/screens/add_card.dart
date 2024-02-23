@@ -1,8 +1,10 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/widgets/bottom_button.dart';
 import 'package:books_app/src/core/widgets/custom_textformfield.dart';
+import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/presentation/screens/library.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddCardScreen extends StatefulWidget {
@@ -135,33 +137,51 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     SizedBox(
                       height: 20.h,
                     ),
-                    BottomButtonWidget(
-                      onPressed: () {
-                        if (_title.text.isNotEmpty &&
-                            _author.text.isNotEmpty &&
-                            _status.text.isNotEmpty &&
-                            _pageBookmark.text.isNotEmpty) {
-                          Navigator.of(context).pop(
-                            MaterialPageRoute<dynamic>(
-                              builder: (context) => const LibraryScreen(),
-                            ),
-                          );
-                        } else {
-                          ScaffoldMessenger.of(context).clearSnackBars();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              duration: const Duration(seconds: 3),
-                              content: Text(
-                                'Поля "Наименование", "Автор" и "Закладка на странице" должны быть заполнены, а также выбран статус',
-                                style: TextStyles.labelText.copyWith(
-                                  color: AppColors.white,
+                    BlocBuilder<CardBloc, CardBlocState>(
+                      builder: (context, state) {
+                        return BottomButtonWidget(
+                          onPressed: () {
+                            if (_title.text.isNotEmpty &&
+                                _author.text.isNotEmpty &&
+                                _status.text.isNotEmpty &&
+                                _pageBookmark.text.isNotEmpty) {
+                              context.read<CardBloc>().add(
+                                    AddCardEvent(
+                                      imagePath: 'assets/images/splash_image.png',
+                                      title: _title.text,
+                                      author: _author.text,
+                                      genre: _genre.text,
+                                      publishedYear: _publishedYear.text,
+                                      pagesQuantity: _pagesQuantity.text,
+                                      description: _description.text,
+                                      status: _status.text,
+                                      pageBookmark: _pageBookmark.text,
+                                      comment: _comment.text,
+                                    ),
+                                  );
+                              Navigator.of(context).pop(
+                                MaterialPageRoute<dynamic>(
+                                  builder: (context) => const LibraryScreen(),
                                 ),
-                              ),
-                            ),
-                          );
-                        }
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).clearSnackBars();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  duration: const Duration(seconds: 3),
+                                  content: Text(
+                                    'Поля "Наименование", "Автор" и "Закладка на странице" должны быть заполнены, а также выбран статус',
+                                    style: TextStyles.labelText.copyWith(
+                                      color: AppColors.white,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                          buttonText: 'Готово',
+                        );
                       },
-                      buttonText: 'Готово',
                     ),
                   ],
                 ),

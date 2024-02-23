@@ -5,19 +5,19 @@ sealed class CardBlocEvent extends Equatable {
   const CardBlocEvent();
 }
 
-class AddNoteEvent extends CardBlocEvent {
+class AddCardEvent extends CardBlocEvent {
   final String? imagePath;
   final String? title;
   final String? author;
   final String? genre;
-  final int? publishedYear;
-  final int? pagesQuantity;
+  final String? publishedYear;
+  final String? pagesQuantity;
   final String? description;
   final String? status;
-  final int? pageBookmark;
+  final String? pageBookmark;
   final String? comment;
 
-  const AddNoteEvent({
+  const AddCardEvent({
     required this.imagePath,
     required this.title,
     required this.author,

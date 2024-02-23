@@ -30,7 +30,6 @@ class CardsDatabase {
   Future<dynamic> _createDB(Database db, int version) async {
     const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     const textType = 'TEXT NOT NULL';
-    const intType = 'INTEGER NOT NULL';
 
     await db.execute('''
 CREATE TABLE $tableCards (
@@ -39,11 +38,11 @@ CREATE TABLE $tableCards (
   ${CardFields.title} $textType,
   ${CardFields.author} $textType,
   ${CardFields.genre} $textType,
-  ${CardFields.publishedYear} $intType,
-  ${CardFields.pagesQuantity} $intType,
+  ${CardFields.publishedYear} $textType,
+  ${CardFields.pagesQuantity} $textType,
   ${CardFields.description} $textType,
   ${CardFields.status} $textType,
-  ${CardFields.pageBookmark} $intType,
+  ${CardFields.pageBookmark} $textType,
   ${CardFields.comment} $textType
 )
 ''');

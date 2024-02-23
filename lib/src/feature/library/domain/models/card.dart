@@ -34,11 +34,11 @@ class Card {
   final String? title;
   final String? author;
   final String? genre;
-  final int? publishedYear;
-  final int? pagesQuantity;
+  final String? publishedYear;
+  final String? pagesQuantity;
   final String? description;
   final String? status;
-  final int? pageBookmark;
+  final String? pageBookmark;
   final String? comment;
 
   Card({
@@ -61,11 +61,11 @@ class Card {
    String? title,
    String? author,
    String? genre,
-   int? publishedYear,
-   int? pagesQuantity,
+   String? publishedYear,
+   String? pagesQuantity,
    String? description,
    String? status,
-   int? pageBookmark,
+   String? pageBookmark,
    String? comment,
 }) => 
       Card(id: id ?? this.id, 
@@ -87,11 +87,11 @@ class Card {
         title: json[CardFields.title] as String, 
         author: json[CardFields.author] as String, 
         genre: json[CardFields.genre] as String, 
-        publishedYear: json[CardFields.publishedYear] as int, 
-        pagesQuantity: json[CardFields.pagesQuantity] as int, 
+        publishedYear: json[CardFields.publishedYear] as String, 
+        pagesQuantity: json[CardFields.pagesQuantity] as String, 
         description: json[CardFields.description] as String, 
         status: json[CardFields.status] as String, 
-        pageBookmark: json[CardFields.pageBookmark] as int, 
+        pageBookmark: json[CardFields.pageBookmark] as String, 
         comment: json[CardFields.comment] as String,
         );
 

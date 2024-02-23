@@ -10,7 +10,7 @@ part 'card_state.dart';
 class CardBloc extends Bloc<CardBlocEvent, CardBlocState> {
   CardBloc() : super(CardBlocInitialState()) {
     var cards = <Card>[];
-    on<AddNoteEvent>((event, emit) async {
+    on<AddCardEvent>((event, emit) async {
       await CardsDatabase.instance.createCard(
         Card(
           imagePath: event.imagePath,
