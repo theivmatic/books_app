@@ -42,4 +42,11 @@ abstract class TextStyles {
       color: AppColors.white,
     ),
   );
+  static final popupItemText = font(
+    textStyle: const TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      color: Color.fromRGBO(0, 0, 0, 0.96),
+    ),
+  );
 }
