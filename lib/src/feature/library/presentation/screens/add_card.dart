@@ -1,3 +1,4 @@
+import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AddCardScreen extends StatefulWidget {
@@ -10,6 +11,18 @@ class AddCardScreen extends StatefulWidget {
 class _AddCardScreenState extends State<AddCardScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.yellow,
+          ),
+        ),
+      ),
+    );
   }
 }
