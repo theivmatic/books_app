@@ -58,12 +58,18 @@ class _AddCardScreenState extends State<AddCardScreen> {
               ),
               child: Padding(
                 padding: EdgeInsets.all(20.dg),
-                child: Container(
-                  width: 350.w,
-                  height: 200.h,
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(12.r),
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 350.w,
+                    height: 200.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    child: Image.asset(
+                      'assets/images/upload_image.png',
+                      scale: 0.5,
+                    ),
                   ),
                 ),
               ),
