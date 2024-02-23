@@ -14,6 +14,18 @@ class CardFields {
     pageBookmark,
     comment,
   ];
+
+  static const String id = '_id';
+  static const String imagePath = 'imagePath';
+  static const String title = 'title';
+  static const String author = 'author';
+  static const String genre = 'genre';
+  static const String publishedYear = 'publishedYear';
+  static const String pagesQuantity = 'pagesQuantity';
+  static const String description = 'description';
+  static const String status = 'status';
+  static const String pageBookmark = 'pageBookmark';
+  static const String comment = 'comment';
 }
 
 class Card {
@@ -44,17 +56,17 @@ class Card {
   });
 
   Card copy({
-   int? id;
-   String? imagePath;
-   String? title;
-   String? author;
-   String? genre;
-   int? publishedYear;
-   int? pagesQuantity;
-   String? description;
-   String? status;
-   int? pageBookmark;
-   String? comment;
+   int? id,
+   String? imagePath,
+   String? title,
+   String? author,
+   String? genre,
+   int? publishedYear,
+   int? pagesQuantity,
+   String? description,
+   String? status,
+   int? pageBookmark,
+   String? comment,
 }) => 
       Card(id: id ?? this.id, 
       imagePath: imagePath ?? this.imagePath, 

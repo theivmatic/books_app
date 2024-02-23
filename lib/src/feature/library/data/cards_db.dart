@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 class CardsDatabase {
   static final CardsDatabase instance = CardsDatabase._init();
 
-  static Database _database;
+  static Database? _database;
 
   CardsDatabase._init();
 
