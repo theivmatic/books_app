@@ -53,6 +53,7 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
                       'Удалить',
                       style: TextStyles.popupItemText.copyWith(
                         color: AppColors.red,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
@@ -73,6 +74,7 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
             'Удалить',
             style: TextStyles.popupItemText.copyWith(
               color: AppColors.red,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),

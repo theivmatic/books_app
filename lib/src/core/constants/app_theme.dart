@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const font = GoogleFonts.montserrat;
@@ -17,9 +18,9 @@ abstract class AppColors {
 
 abstract class TextStyles {
   static final appbarTitleText = font(
-    textStyle: const TextStyle(
+    textStyle: TextStyle(
       fontWeight: FontWeight.w600,
-      fontSize: 20,
+      fontSize: 20.sp,
       color: AppColors.black,
     ),
   );
@@ -29,24 +30,38 @@ abstract class TextStyles {
     ),
   );
   static final settingTileText = font(
-    textStyle: const TextStyle(
+    textStyle: TextStyle(
       fontWeight: FontWeight.w600,
-      fontSize: 16,
+      fontSize: 16.sp,
       color: AppColors.black,
     ),
   );
   static final bottomButtonText = font(
-    textStyle: const TextStyle(
+    textStyle: TextStyle(
       fontWeight: FontWeight.w600,
-      fontSize: 16,
+      fontSize: 16.sp,
       color: AppColors.white,
     ),
   );
   static final popupItemText = font(
-    textStyle: const TextStyle(
+    textStyle: TextStyle(
       fontWeight: FontWeight.w500,
-      fontSize: 16,
-      color: Color.fromRGBO(0, 0, 0, 0.96),
+      fontSize: 16.sp,
+      color: const Color.fromRGBO(0, 0, 0, 0.96),
+    ),
+  );
+  static final labelText = font(
+    textStyle: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 10.sp,
+      color: AppColors.black,
+    ),
+  );
+  static final inputText = font(
+    textStyle: TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 16.sp,
+      color: AppColors.black,
     ),
   );
 }
