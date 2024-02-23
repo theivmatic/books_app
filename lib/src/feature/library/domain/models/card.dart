@@ -42,7 +42,7 @@ class Card {
   final String? comment;
 
   Card({
-    required this.id,
+    this.id,
     required this.imagePath,
     required this.title,
     required this.author,

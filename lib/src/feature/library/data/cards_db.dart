@@ -81,14 +81,14 @@ CREATE TABLE $tableCards (
     return result.map(Card.fromJson).toList();
   }
 
-  Future<int> updateCard({required Card note}) async {
+  Future<int> updateCard({required Card card}) async {
     final db = await instance.database;
 
     return db.update(
       tableCards,
-      note.toJson(),
+      card.toJson(),
       where: '${CardFields.id} = ?',
-      whereArgs: [note.id],
+      whereArgs: [card.id],
     );
   }
 
