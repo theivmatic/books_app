@@ -1,6 +1,6 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+import 'package:books_app/src/core/widgets/bottom_button.dart';
 import 'package:books_app/src/core/widgets/custom_textformfield.dart';
-import 'package:books_app/src/feature/library/presentation/widgets/card_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,6 +12,7 @@ class AddCardScreen extends StatefulWidget {
 }
 
 class _AddCardScreenState extends State<AddCardScreen> {
+  //Controllers for form
   final TextEditingController _title = TextEditingController();
   final TextEditingController _author = TextEditingController();
   final TextEditingController _genre = TextEditingController();
@@ -42,6 +43,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
       ),
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -72,10 +74,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: AppColors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.r),
-                  topRight: Radius.circular(20.r),
-                ),
+                borderRadius: BorderRadius.circular(20.r),
               ),
               child: Padding(
                 padding: EdgeInsets.all(20.dg),
@@ -125,6 +124,30 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       labelText: 'Комментарии',
                       helperText: 'Необязательно для заполнения',
                       controller: _comment,
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    BottomButtonWidget(
+                      onPressed: () {
+                        if (_title.text.isNotEmpty &&
+                            _author.text.isNotEmpty &&
+                            _status.text.isNotEmpty &&
+                            _pageBookmark.text.isNotEmpty) {
+                          Navigator.of(context).pop();
+                        } else {
+                          ScaffoldMessenger.of(context).clearSnackBars();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              duration: Duration(seconds: 3),
+                              content: Text(
+                                'Поля "Наименование", "Автор" и "Закладка на странице" должны быть заполнены, а также выбран статус',
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                      buttonText: 'Готово',
                     ),
                   ],
                 ),

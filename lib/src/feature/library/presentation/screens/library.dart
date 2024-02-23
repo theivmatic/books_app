@@ -27,25 +27,27 @@ class _LibraryScreenState extends State<LibraryScreen> {
         },
       ),
       backgroundColor: AppColors.backgroundColor,
-      body: BlocBuilder<CardBloc, CardBlocState>(
-        builder: (context, state) {
-          if (state is CardBlocInitialState) {
-            context.read<CardBloc>().add(
-                  const FetchCardsEvent(),
-                );
-          }
-          if (state is DisplayCards) {
-            if (state.card.isEmpty) {
-              return const Center(
-                child:
-                    Text('Нажмите на кнопку сверху, чтобы добавить карточку'),
-              );
+      body: SafeArea(
+        child: BlocBuilder<CardBloc, CardBlocState>(
+          builder: (context, state) {
+            if (state is CardBlocInitialState) {
+              context.read<CardBloc>().add(
+                    const FetchCardsEvent(),
+                  );
             }
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+            if (state is DisplayCards) {
+              if (state.card.isEmpty) {
+                return const Center(
+                  child:
+                      Text('Нажмите на кнопку сверху, чтобы добавить карточку'),
+                );
+              }
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+        ),
       ),
     );
   }
