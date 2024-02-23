@@ -1,6 +1,7 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/widgets/bottom_button.dart';
 import 'package:books_app/src/core/widgets/custom_textformfield.dart';
+import 'package:books_app/src/feature/library/presentation/screens/library.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -134,14 +135,21 @@ class _AddCardScreenState extends State<AddCardScreen> {
                             _author.text.isNotEmpty &&
                             _status.text.isNotEmpty &&
                             _pageBookmark.text.isNotEmpty) {
-                          Navigator.of(context).pop();
+                          Navigator.of(context).pop(
+                            MaterialPageRoute<dynamic>(
+                              builder: (context) => const LibraryScreen(),
+                            ),
+                          );
                         } else {
                           ScaffoldMessenger.of(context).clearSnackBars();
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              duration: Duration(seconds: 3),
+                            SnackBar(
+                              duration: const Duration(seconds: 3),
                               content: Text(
                                 'Поля "Наименование", "Автор" и "Закладка на странице" должны быть заполнены, а также выбран статус',
+                                style: TextStyles.labelText.copyWith(
+                                  color: AppColors.white,
+                                ),
                               ),
                             ),
                           );
