@@ -1,6 +1,7 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/widgets/custom_appbar.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
+import 'package:books_app/src/feature/library/presentation/screens/add_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +18,13 @@ class _LibraryScreenState extends State<LibraryScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Твоя библиотека',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<dynamic>(
+              builder: (context) => const AddCardScreen(),
+            ),
+          );
+        },
       ),
       backgroundColor: AppColors.backgroundColor,
       body: BlocBuilder<CardBloc, CardBlocState>(
