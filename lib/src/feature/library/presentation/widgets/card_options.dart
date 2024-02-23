@@ -1,4 +1,5 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,7 +31,44 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
           ),
         ),
         PopupMenuItem<Widget>(
-          onTap: () {},
+          onTap: () {
+            showCupertinoDialog<Widget>(
+              barrierDismissible: true,
+              context: context,
+              builder: (_) => AlertDialog(
+                actionsAlignment: MainAxisAlignment.spaceEvenly,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    12.r,
+                  ),
+                ),
+                title: Text(
+                  'Вы уверены, что хотите удалить карточку?',
+                  style: TextStyles.popupItemText,
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Удалить',
+                      style: TextStyles.popupItemText.copyWith(
+                        color: AppColors.red,
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      'Отмена',
+                      style: TextStyles.popupItemText,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
           child: Text(
             'Удалить',
             style: TextStyles.popupItemText.copyWith(
