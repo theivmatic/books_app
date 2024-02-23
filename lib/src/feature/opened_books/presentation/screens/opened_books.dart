@@ -38,7 +38,7 @@ class OpenedBooksScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: AppColors.backgroundColor,
-      body: Center(
+      body: const Center(
         child: Text('Opened books'),
       ),
     );
