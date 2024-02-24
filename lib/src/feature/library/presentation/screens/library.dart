@@ -41,6 +41,10 @@ class _LibraryScreenState extends State<LibraryScreen> {
                   child:
                       Text('Нажмите на кнопку сверху, чтобы добавить карточку'),
                 );
+              } else {
+                return const Center(
+              child: Text('sss'),
+            );
               }
             }
             return const Center(
