@@ -1,5 +1,6 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
+import 'package:books_app/src/feature/library/presentation/screens/card_details.dart';
 import 'package:books_app/src/feature/library/presentation/widgets/card_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +21,15 @@ class _CardWidgetState extends State<CardWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute<dynamic>(
+            builder: (context) => CardDetailsScreen(
+              card: widget.card,
+            ),
+          ),
+        );
+      },
       child: Padding(
         padding: EdgeInsets.all(20.dg),
         child: Container(

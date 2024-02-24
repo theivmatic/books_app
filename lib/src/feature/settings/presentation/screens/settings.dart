@@ -32,6 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             20,
           ),
         ),
+        backgroundColor: AppColors.white,
       ),
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(

@@ -26,6 +26,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           20,
         ),
       ),
+      backgroundColor: AppColors.white,
       actions: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
