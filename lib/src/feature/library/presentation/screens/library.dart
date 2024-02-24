@@ -39,8 +39,9 @@ class _LibraryScreenState extends State<LibraryScreen> {
             if (state is DisplayCards) {
               if (state.bookCard.isEmpty) {
                 return const Center(
-                  child:
-                      Text('Нажмите на кнопку сверху, чтобы добавить карточку'),
+                  child: Text(
+                    'Нажмите на кнопку сверху, чтобы добавить карточку',
+                  ),
                 );
               } else {
                 return ListView.builder(

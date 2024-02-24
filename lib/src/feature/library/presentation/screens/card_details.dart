@@ -35,10 +35,22 @@ class _CardDetailsScreenState extends State<CardDetailsScreen> {
               size: 25.dg,
             ),
           ),
-          
         ),
         backgroundColor: AppColors.white,
-        title: Text(widget.card.title ?? ''),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.card.title ?? '',
+              style: TextStyles.appbarTitleText,
+            ),
+            Text(
+              'Твоя библиотека',
+              style: TextStyles.labelText,
+            ),
+          ],
+        ),
+        centerTitle: false,
       ),
       backgroundColor: AppColors.backgroundColor,
       body: BlocBuilder<CardBloc, CardBlocState>(
@@ -91,46 +103,55 @@ class _CardDetailsScreenState extends State<CardDetailsScreen> {
                           labelText: 'Наименование',
                           helperText: '',
                           initialValue: widget.card.title,
+                          isEnabled: false,
                         ),
                         CustomTextFormField(
                           labelText: 'Aвтор',
                           helperText: '',
                           initialValue: widget.card.author,
+                          isEnabled: false,
                         ),
                         CustomTextFormField(
                           labelText: 'Жанр',
                           helperText: '',
                           initialValue: widget.card.genre,
+                          isEnabled: false,
                         ),
                         CustomTextFormField(
                           labelText: 'Год издания',
                           helperText: '',
                           initialValue: widget.card.publishedYear,
+                          isEnabled: false,
                         ),
                         CustomTextFormField(
                           labelText: 'Количество страниц',
                           helperText: '',
                           initialValue: widget.card.pagesQuantity,
+                          isEnabled: false,
                         ),
                         CustomTextFormField(
                           labelText: 'Описание',
                           helperText: '',
                           initialValue: widget.card.description,
+                          isEnabled: false,
                         ),
                         CustomTextFormField(
                           labelText: 'Статус',
                           helperText: '',
                           initialValue: widget.card.status,
+                          isEnabled: false,
                         ),
                         CustomTextFormField(
                           labelText: 'Закладка на странице',
                           helperText: '',
                           initialValue: widget.card.pageBookmark,
+                          isEnabled: false,
                         ),
                         CustomTextFormField(
                           labelText: 'Комментарии',
                           helperText: '',
                           initialValue: widget.card.comment,
+                          isEnabled: false,
                         ),
                       ],
                     ),

@@ -6,6 +6,7 @@ class CustomTextFormField extends StatelessWidget {
   final String helperText;
   final TextEditingController? controller;
   final String? initialValue;
+  final bool? isEnabled;
 
   const CustomTextFormField({
     super.key,
@@ -13,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.helperText,
     this.controller,
     this.initialValue,
+    this.isEnabled,
   });
 
   @override
@@ -20,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       initialValue: initialValue,
       controller: controller,
+      enabled: isEnabled,
       style: TextStyles.inputText,
       decoration: InputDecoration(
         labelText: labelText,

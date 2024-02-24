@@ -43,6 +43,20 @@ class _AddCardScreenState extends State<AddCardScreen> {
             ),
           ),
         ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Наименование',
+              style: TextStyles.appbarTitleText,
+            ),
+            Text(
+              'Твоя библиотека',
+              style: TextStyles.labelText,
+            ),
+          ],
+        ),
+        centerTitle: false,
       ),
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
