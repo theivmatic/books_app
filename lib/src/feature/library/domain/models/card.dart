@@ -28,7 +28,7 @@ class CardFields {
   static const String comment = 'comment';
 }
 
-class Card {
+class BookCard {
   final int? id;
   final String? imagePath;
   final String? title;
@@ -41,7 +41,7 @@ class Card {
   final String? pageBookmark;
   final String? comment;
 
-  Card({
+  BookCard({
     this.id,
     required this.imagePath,
     required this.title,
@@ -55,7 +55,7 @@ class Card {
     required this.comment,
   });
 
-  Card copy({
+  BookCard copy({
    int? id,
    String? imagePath,
    String? title,
@@ -68,7 +68,7 @@ class Card {
    String? pageBookmark,
    String? comment,
 }) => 
-      Card(id: id ?? this.id, 
+      BookCard(id: id ?? this.id, 
       imagePath: imagePath ?? this.imagePath, 
       title: title ?? this.title, 
       author: author ?? this.author, 
@@ -81,7 +81,7 @@ class Card {
       comment: comment ?? this.comment,
       );
 
-      static Card fromJson(Map<String, Object?> json) => Card(
+      static BookCard fromJson(Map<String, Object?> json) => BookCard(
         id: json[CardFields.id] as int?, 
         imagePath: json[CardFields.imagePath] as String, 
         title: json[CardFields.title] as String, 

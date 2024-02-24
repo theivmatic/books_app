@@ -9,10 +9,10 @@ part 'card_state.dart';
 
 class CardBloc extends Bloc<CardBlocEvent, CardBlocState> {
   CardBloc() : super(CardBlocInitialState()) {
-    var cards = <Card>[];
+    var bookCards = <BookCard>[];
     on<AddCardEvent>((event, emit) async {
       await CardsDatabase.instance.createCard(
-        Card(
+        BookCard(
           imagePath: event.imagePath,
           title: event.title,
           author: event.author,
@@ -28,10 +28,10 @@ class CardBloc extends Bloc<CardBlocEvent, CardBlocState> {
     });
 
     on<FetchCardsEvent>((event, emit) async {
-      cards = await CardsDatabase.instance.readAllCards();
+      bookCards = await CardsDatabase.instance.readAllCards();
       emit(
         DisplayCards(
-          card: cards,
+          bookCard: bookCards,
           imagePath: CardFields.imagePath,
         ),
       );
@@ -41,14 +41,14 @@ class CardBloc extends Bloc<CardBlocEvent, CardBlocState> {
       final card = await CardsDatabase.instance.readCard(id: event.id);
       emit(
         DisplaySpecificCards(
-          card: card,
+          bookCard: card,
         ),
       );
     });
 
     on<UpdateCardEvent>((event, emit) async {
       await CardsDatabase.instance.updateCard(
-        card: event.updatedCard,
+        bookCard: event.updatedCard,
       );
     });
 

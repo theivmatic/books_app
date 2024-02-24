@@ -48,14 +48,14 @@ CREATE TABLE $tableCards (
 ''');
   }
 
-  Future<Card> createCard(Card card) async {
+  Future<BookCard> createCard(BookCard card) async {
     final db = await instance.database;
 
     final id = await db.insert(tableCards, card.toJson());
     return card.copy(id: id);
   }
 
-  Future<Card> readCard({required int id}) async {
+  Future<BookCard> readCard({required int id}) async {
     final db = await instance.database;
 
     final maps = await db.query(
@@ -66,28 +66,28 @@ CREATE TABLE $tableCards (
     );
 
     if (maps.isNotEmpty) {
-      return Card.fromJson(maps.first);
+      return BookCard.fromJson(maps.first);
     } else {
       throw Exception('ID $id not found');
     }
   }
 
-  Future<List<Card>> readAllCards() async {
+  Future<List<BookCard>> readAllCards() async {
     final db = await instance.database;
 
     final result = await db.query(tableCards);
 
-    return result.map(Card.fromJson).toList();
+    return result.map(BookCard.fromJson).toList();
   }
 
-  Future<int> updateCard({required Card card}) async {
+  Future<int> updateCard({required BookCard bookCard}) async {
     final db = await instance.database;
 
     return db.update(
       tableCards,
-      card.toJson(),
+      bookCard.toJson(),
       where: '${CardFields.id} = ?',
-      whereArgs: [card.id],
+      whereArgs: [bookCard.id],
     );
   }
 

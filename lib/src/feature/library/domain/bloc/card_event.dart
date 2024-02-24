@@ -64,7 +64,7 @@ class FetchSpecificCardEvent extends CardBlocEvent {
 }
 
 class UpdateCardEvent extends CardBlocEvent {
-  final Card updatedCard;
+  final BookCard updatedCard;
 
   const UpdateCardEvent({
     required this.updatedCard,

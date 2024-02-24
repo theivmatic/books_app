@@ -11,25 +11,25 @@ final class CardBlocInitialState extends CardBlocState {
 }
 
 class DisplayCards extends CardBlocState {
-  final List<Card> card;
+  final List<BookCard> bookCard;
   final String imagePath;
 
   const DisplayCards({
-    required this.card,
+    required this.bookCard,
     required this.imagePath,
   });
 
   @override
-  List<Object> get props => [card];
+  List<Object> get props => [bookCard];
 }
 
 class DisplaySpecificCards extends CardBlocState {
-  final Card card;
+  final BookCard bookCard;
 
   const DisplaySpecificCards({
-    required this.card,
+    required this.bookCard,
   });
 
   @override
-  List<Object> get props => [card];
+  List<Object> get props => [bookCard];
 }
