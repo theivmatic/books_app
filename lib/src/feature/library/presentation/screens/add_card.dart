@@ -133,11 +133,49 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       helperText: 'Необязательно для заполнения',
                       controller: _description,
                     ),
-                    CustomTextFormField(
-                      labelText: 'Стастус',
-                      helperText: '',
-                      controller: _status,
+                    DropdownButtonFormField(
+                      borderRadius: BorderRadius.circular(12.r),
+                      icon: const Icon(
+                        Icons.keyboard_arrow_down,
+                        color: AppColors.grey,
+                      ),
+                      items: [
+                        DropdownMenuItem<String>(
+                          child: Text(
+                            'Читаю',
+                            style: TextStyles.inputText,
+                          ),
+                          value: '1',
+                        ),
+                        DropdownMenuItem<String>(
+                          child: Text(
+                            'Прочитана',
+                            style: TextStyles.inputText,
+                          ),
+                          value: '2',
+                        ),
+                        DropdownMenuItem<String>(
+                          child: Text(
+                            'Неинтересно',
+                            style: TextStyles.inputText,
+                          ),
+                          value: '3',
+                        ),
+                        DropdownMenuItem<String>(
+                          child: Text(
+                            'Хочу прочитать',
+                            style: TextStyles.inputText,
+                          ),
+                          value: '4',
+                        ),
+                      ],
+                      onChanged: (v) {},
                     ),
+                    // CustomTextFormField(
+                    //   labelText: 'Статус',
+                    //   helperText: '',
+                    //   controller: _status,
+                    // ),
                     CustomTextFormField(
                       labelText: 'Закладка на странице',
                       helperText: '',
@@ -157,7 +195,6 @@ class _AddCardScreenState extends State<AddCardScreen> {
                           onPressed: () {
                             if (_title.text.isNotEmpty &&
                                 _author.text.isNotEmpty &&
-                                _status.text.isNotEmpty &&
                                 _pageBookmark.text.isNotEmpty) {
                               context.read<CardBloc>().add(
                                     AddCardEvent(
