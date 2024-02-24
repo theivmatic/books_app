@@ -63,7 +63,9 @@ class _CardWidgetState extends State<CardWidget> {
                   ),
                 ],
               ),
-              const CardOptionsWidget(),
+              CardOptionsWidget(
+                widget: widget,
+              ),
             ],
           ),
         ),

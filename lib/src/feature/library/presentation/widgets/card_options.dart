@@ -1,10 +1,18 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
+import 'package:books_app/src/feature/library/presentation/widgets/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CardOptionsWidget extends StatefulWidget {
-  const CardOptionsWidget({super.key});
+  final CardWidget widget;
+
+  const CardOptionsWidget({
+    super.key,
+    required this.widget,
+  });
 
   @override
   State<CardOptionsWidget> createState() => _CardOptionsWidgetState();
@@ -48,7 +56,14 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
                 ),
                 actions: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<CardBloc>().add(
+                            DeleteCardEvent(
+                              id: widget.widget.card.id ?? 0,
+                            ),
+                          );
+                          Navigator.of(context).pop();
+                    },
                     child: Text(
                       'Удалить',
                       style: TextStyles.popupItemText.copyWith(
