@@ -14,7 +14,7 @@ class OpenedBooksScreen extends StatelessWidget {
       ),
       backgroundColor: AppColors.backgroundColor,
       body: const Center(
-        child: Text('Opened books'),
+        child: Text('Нажмите на кнопку сверху, чтобы добавить книгу'),
       ),
     );
   }
