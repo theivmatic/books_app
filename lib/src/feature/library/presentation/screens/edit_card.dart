@@ -1,9 +1,17 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
+import 'package:books_app/src/feature/library/domain/models/card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditCardScreen extends StatefulWidget {
-  const EditCardScreen({super.key});
+  final BookCard card;
+
+  const EditCardScreen({
+    super.key,
+    required this.card,
+  });
 
   @override
   State<EditCardScreen> createState() => _EditCardScreenState();
@@ -31,7 +39,7 @@ class _EditCardScreenState extends State<EditCardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Наименование',
+              widget.card.title ?? 'Наименование',
               style: TextStyles.appbarTitleText,
             ),
             Text(
@@ -43,6 +51,14 @@ class _EditCardScreenState extends State<EditCardScreen> {
         centerTitle: false,
       ),
       backgroundColor: AppColors.backgroundColor,
+      body: BlocBuilder<CardBloc, CardBlocState>(
+        builder: (context, state) {
+          if (state is DisplaySpecificCards) {
+            return const Placeholder();
+          }
+          return const CircularProgressIndicator();
+        },
+      ),
     );
   }
 }

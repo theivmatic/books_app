@@ -36,7 +36,9 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute<dynamic>(
-                builder: (context) => const EditCardScreen(),
+                builder: (context) => EditCardScreen(
+                  card: widget.widget.card,
+                ),
               ),
             );
           },
