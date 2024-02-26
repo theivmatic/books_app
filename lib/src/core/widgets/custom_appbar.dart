@@ -5,11 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final VoidCallback onPressed;
+  final ShapeBorder? shape;
 
   const CustomAppBar({
     super.key,
     required this.title,
-    required this.onPressed,
+    required this.onPressed, this.shape,
   });
 
   @override
@@ -21,11 +22,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: false,
       elevation: 5,
       shadowColor: AppColors.elevButtnShadow,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(
-          20,
-        ),
-      ),
+      shape: shape,
+      // RoundedRectangleBorder(
+      //   borderRadius: BorderRadius.circular(
+      //     20,
+      //   ),
+      // ),
       backgroundColor: AppColors.white,
       actions: [
         Padding(

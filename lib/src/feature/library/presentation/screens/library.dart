@@ -1,5 +1,6 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/widgets/custom_appbar.dart';
+import 'package:books_app/src/core/widgets/search_bar.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/presentation/screens/add_card.dart';
 import 'package:books_app/src/feature/library/presentation/widgets/card.dart';
@@ -45,10 +46,25 @@ class _LibraryScreenState extends State<LibraryScreen> {
                 );
               } else {
                 return ListView.builder(
+                  physics: const ClampingScrollPhysics(),
                   itemCount: state.bookCard.length,
                   itemBuilder: (context, index) {
-                    return CardWidget(
-                      card: state.bookCard[index],
+                    if (index == 0) {
+                      return Wrap(
+                      children: [
+                        const SearchBarWidget(),
+                        CardWidget(
+                          card: state.bookCard[index],
+                        ),
+                      ],
+                    );
+                    }
+                    return Wrap(
+                      children: [
+                        CardWidget(
+                          card: state.bookCard[index],
+                        ),
+                      ],
                     );
                   },
                 );
