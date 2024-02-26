@@ -31,7 +31,7 @@ class _CardWidgetState extends State<CardWidget> {
         );
       },
       child: Padding(
-        padding: EdgeInsets.all(20.dg),
+        padding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 0),
         child: Container(
           padding: EdgeInsets.all(20.dg),
           width: 350.w,
@@ -61,12 +61,12 @@ class _CardWidgetState extends State<CardWidget> {
                   Text(
                     widget.card.genre ?? '',
                     style: TextStyles.labelText,
-                    overflow: TextOverflow.ellipsis,
+                    overflow: TextOverflow.clip,
                   ),
                   Text(
                     widget.card.title ?? '',
                     style: TextStyles.settingTileText,
-                    overflow: TextOverflow.ellipsis,
+                    overflow: TextOverflow.clip,
                   ),
                   SizedBox(
                     height: 30.h,
@@ -74,7 +74,7 @@ class _CardWidgetState extends State<CardWidget> {
                   Text(
                     widget.card.author ?? '',
                     style: TextStyles.labelText,
-                    overflow: TextOverflow.ellipsis,
+                    overflow: TextOverflow.clip,
                   ),
                 ],
               ),
