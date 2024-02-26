@@ -1,7 +1,7 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
-import 'package:books_app/src/core/widgets/custom_textformfield.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
+import 'package:books_app/src/feature/library/presentation/widgets/card_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -98,60 +98,43 @@ class _CardDetailsScreenState extends State<CardDetailsScreen> {
                   child: Padding(
                     padding: EdgeInsets.all(20.dg),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomTextFormField(
-                          labelText: 'Наименование',
-                          helperText: '',
-                          initialValue: widget.card.title,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Название',
+                          content: widget.card.title ?? '',
                         ),
-                        CustomTextFormField(
-                          labelText: 'Aвтор',
-                          helperText: '',
-                          initialValue: widget.card.author,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Aвтор',
+                          content: widget.card.author ?? '',
                         ),
-                        CustomTextFormField(
-                          labelText: 'Жанр',
-                          helperText: '',
-                          initialValue: widget.card.genre,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Жанр',
+                          content: widget.card.genre ?? '',
                         ),
-                        CustomTextFormField(
-                          labelText: 'Год издания',
-                          helperText: '',
-                          initialValue: widget.card.publishedYear,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Год издания',
+                          content: widget.card.publishedYear ?? '',
                         ),
-                        CustomTextFormField(
-                          labelText: 'Количество страниц',
-                          helperText: '',
-                          initialValue: widget.card.pagesQuantity,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Количество страниц',
+                          content: widget.card.pagesQuantity ?? '',
                         ),
-                        CustomTextFormField(
-                          labelText: 'Описание',
-                          helperText: '',
-                          initialValue: widget.card.description,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Описание',
+                          content: widget.card.description ?? '',
                         ),
-                        CustomTextFormField(
-                          labelText: 'Статус',
-                          helperText: '',
-                          initialValue: widget.card.status,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Статус',
+                          content: widget.card.status ?? '',
                         ),
-                        CustomTextFormField(
-                          labelText: 'Закладка на странице',
-                          helperText: '',
-                          initialValue: widget.card.pageBookmark,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Закладка на странице',
+                          content: widget.card.pageBookmark ?? '',
                         ),
-                        CustomTextFormField(
-                          labelText: 'Комментарии',
-                          helperText: '',
-                          initialValue: widget.card.comment,
-                          isEnabled: false,
+                        CardDetailWidget(
+                          label: 'Комментарии',
+                          content: widget.card.comment ?? '',
                         ),
                       ],
                     ),

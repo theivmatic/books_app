@@ -41,6 +41,7 @@ class _CardWidgetState extends State<CardWidget> {
             borderRadius: BorderRadius.circular(20.r),
           ),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
@@ -51,17 +52,21 @@ class _CardWidgetState extends State<CardWidget> {
                   scale: 0.5,
                 ),
               ),
+              SizedBox(
+                width: 10.w,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     widget.card.genre ?? '',
                     style: TextStyles.labelText,
-                    overflow: TextOverflow.clip,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     widget.card.title ?? '',
                     style: TextStyles.settingTileText,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(
                     height: 30.h,
@@ -69,6 +74,7 @@ class _CardWidgetState extends State<CardWidget> {
                   Text(
                     widget.card.author ?? '',
                     style: TextStyles.labelText,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
