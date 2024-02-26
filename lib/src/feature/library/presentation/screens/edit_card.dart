@@ -102,16 +102,31 @@ class _EditCardScreenState extends State<EditCardScreen> {
                       padding: EdgeInsets.all(20.dg),
                       child: InkWell(
                         onTap: () {},
-                        child: Container(
-                          width: 350.w,
-                          height: 200.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.r),
-                          ),
-                          child: Image.asset(
-                            'assets/images/upload_image.png',
-                            scale: 0.5,
-                          ),
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: 350.w,
+                              height: 200.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                              child: Image.asset(
+                                'assets/images/splash_image.png',
+                                scale: 0.5,
+                              ),
+                            ),
+                            Container(
+                              width: 350.w,
+                              height: 200.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                              child: Image.asset(
+                                'assets/images/upload_image.png',
+                                scale: 0.5,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
