@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditCardScreen extends StatefulWidget {
-  final BookCard card;
+  final BookCard? card;
 
   const EditCardScreen({
     super.key,
@@ -20,6 +20,25 @@ class EditCardScreen extends StatefulWidget {
 class _EditCardScreenState extends State<EditCardScreen> {
   @override
   Widget build(BuildContext context) {
+
+    //Form controllers
+    final TextEditingController _newTitle =
+        TextEditingController(text: widget.card?.title);
+    final TextEditingController _newAuthor =
+        TextEditingController(text: widget.card?.author);
+    final TextEditingController _newGenre =
+        TextEditingController(text: widget.card?.genre);
+    final TextEditingController _newPublishedYear =
+        TextEditingController(text: widget.card?.publishedYear);
+    final TextEditingController _newPagesQuantity =
+        TextEditingController(text: widget.card?.pagesQuantity);
+    final TextEditingController _newDescription =
+        TextEditingController(text: widget.card?.description);
+    final TextEditingController _newPageBookmark =
+        TextEditingController(text: widget.card?.pageBookmark);
+    final TextEditingController _newComment =
+        TextEditingController(text: widget.card?.comment);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -44,7 +63,7 @@ class _EditCardScreenState extends State<EditCardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.card.title ?? 'Наименование',
+              widget.card?.title ?? 'Наименование',
               style: TextStyles.appbarTitleText,
             ),
             Text(
@@ -59,7 +78,7 @@ class _EditCardScreenState extends State<EditCardScreen> {
       body: BlocBuilder<CardBloc, CardBlocState>(
         builder: (context, state) {
           if (state is DisplaySpecificCards) {
-            return const Placeholder();
+            return const Column();
           }
           return const CircularProgressIndicator();
         },

@@ -15,7 +15,8 @@ class AddCardScreen extends StatefulWidget {
 }
 
 class _AddCardScreenState extends State<AddCardScreen> {
-  //Controllers for form
+  
+  //Form controllers
   final TextEditingController _title = TextEditingController();
   final TextEditingController _author = TextEditingController();
   final TextEditingController _genre = TextEditingController();
