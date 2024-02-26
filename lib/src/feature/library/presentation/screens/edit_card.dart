@@ -24,10 +24,15 @@ class _EditCardScreenState extends State<EditCardScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
+            context.read<CardBloc>().add(
+                  const FetchCardsEvent(),
+                );
             Navigator.of(context).pop();
           },
           icon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
+            ),
             child: Icon(
               Icons.arrow_back_ios,
               color: AppColors.yellow,
