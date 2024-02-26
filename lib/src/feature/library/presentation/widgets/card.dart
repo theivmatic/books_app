@@ -57,6 +57,7 @@ class _CardWidgetState extends State<CardWidget> {
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     widget.card.genre ?? '',

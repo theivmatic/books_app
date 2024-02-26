@@ -22,9 +22,17 @@ class _AddCardScreenState extends State<AddCardScreen> {
   final TextEditingController _publishedYear = TextEditingController();
   final TextEditingController _pagesQuantity = TextEditingController();
   final TextEditingController _description = TextEditingController();
-  final TextEditingController _status = TextEditingController();
   final TextEditingController _pageBookmark = TextEditingController();
   final TextEditingController _comment = TextEditingController();
+
+  final _statusList = [
+    'Не выбран',
+    'Читаю',
+    'Прочитана',
+    'Неинтересно',
+    'Хочу прочитать',
+  ];
+  String? _selectedValue = 'Не выбран';
 
   @override
   Widget build(BuildContext context) {
@@ -134,42 +142,27 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       controller: _description,
                     ),
                     DropdownButtonFormField(
+                      value: _selectedValue,
                       borderRadius: BorderRadius.circular(12.r),
+                      hint: Text(
+                        'Не выбран',
+                        style: TextStyles.inputText,
+                      ),
                       icon: const Icon(
                         Icons.keyboard_arrow_down,
                         color: AppColors.grey,
                       ),
-                      items: [
-                        DropdownMenuItem<String>(
-                          child: Text(
-                            'Читаю',
-                            style: TextStyles.inputText,
-                          ),
-                          value: '1',
-                        ),
-                        DropdownMenuItem<String>(
-                          child: Text(
-                            'Прочитана',
-                            style: TextStyles.inputText,
-                          ),
-                          value: '2',
-                        ),
-                        DropdownMenuItem<String>(
-                          child: Text(
-                            'Неинтересно',
-                            style: TextStyles.inputText,
-                          ),
-                          value: '3',
-                        ),
-                        DropdownMenuItem<String>(
-                          child: Text(
-                            'Хочу прочитать',
-                            style: TextStyles.inputText,
-                          ),
-                          value: '4',
-                        ),
-                      ],
-                      onChanged: (v) {},
+                      items: _statusList.map((e) {
+                        return DropdownMenuItem(
+                          child: Text(e),
+                          value: e,
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedValue = value as String;
+                        });
+                      },
                     ),
                     // CustomTextFormField(
                     //   labelText: 'Статус',
@@ -206,7 +199,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                                       publishedYear: _publishedYear.text,
                                       pagesQuantity: _pagesQuantity.text,
                                       description: _description.text,
-                                      status: _status.text,
+                                      status: _selectedValue,
                                       pageBookmark: _pageBookmark.text,
                                       comment: _comment.text,
                                     ),
