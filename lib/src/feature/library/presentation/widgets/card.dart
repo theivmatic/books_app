@@ -55,29 +55,30 @@ class _CardWidgetState extends State<CardWidget> {
               SizedBox(
                 width: 10.w,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    widget.card.genre ?? '',
-                    style: TextStyles.labelText,
-                    overflow: TextOverflow.clip,
-                  ),
-                  Text(
-                    widget.card.title ?? '',
-                    style: TextStyles.settingTileText,
-                    overflow: TextOverflow.clip,
-                  ),
-                  SizedBox(
-                    height: 30.h,
-                  ),
-                  Text(
-                    widget.card.author ?? '',
-                    style: TextStyles.labelText,
-                    overflow: TextOverflow.clip,
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.card.genre ?? '',
+                      style: TextStyles.labelText,
+                      overflow: TextOverflow.clip,
+                    ),
+                    Text(
+                      widget.card.title ?? '',
+                      style: TextStyles.settingTileText,
+                      overflow: TextOverflow.clip,
+                    ),
+                    const Expanded(
+                      child: SizedBox(),
+                    ),
+                    Text(
+                      widget.card.author ?? '',
+                      style: TextStyles.labelText,
+                      overflow: TextOverflow.clip,
+                    ),
+                  ],
+                ),
               ),
               CardOptionsWidget(
                 widget: widget,
