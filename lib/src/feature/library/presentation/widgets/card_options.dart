@@ -1,5 +1,6 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
+import 'package:books_app/src/feature/library/presentation/screens/edit_card.dart';
 import 'package:books_app/src/feature/library/presentation/widgets/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,13 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
       ),
       itemBuilder: (context) => [
         PopupMenuItem<Widget>(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute<dynamic>(
+                builder: (context) => const EditCardScreen(),
+              ),
+            );
+          },
           child: Text(
             'Редактировать',
             style: TextStyles.popupItemText,
@@ -62,7 +69,7 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
                               id: widget.widget.card.id ?? 0,
                             ),
                           );
-                          Navigator.of(context).pop();
+                      Navigator.of(context).pop();
                     },
                     child: Text(
                       'Удалить',
