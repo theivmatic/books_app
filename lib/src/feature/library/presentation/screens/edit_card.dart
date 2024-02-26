@@ -33,22 +33,18 @@ class _EditCardScreenState extends State<EditCardScreen> {
   @override
   Widget build(BuildContext context) {
     //Form controllers
-    final TextEditingController _newTitle =
-        TextEditingController(text: widget.card?.title);
-    final TextEditingController _newAuthor =
-        TextEditingController(text: widget.card?.author);
-    final TextEditingController _newGenre =
-        TextEditingController(text: widget.card?.genre);
-    final TextEditingController _newPublishedYear =
+    final newTitle = TextEditingController(text: widget.card?.title);
+    final newAuthor = TextEditingController(text: widget.card?.author);
+    final newGenre = TextEditingController(text: widget.card?.genre);
+    final newPublishedYear =
         TextEditingController(text: widget.card?.publishedYear);
-    final TextEditingController _newPagesQuantity =
+    final newPagesQuantity =
         TextEditingController(text: widget.card?.pagesQuantity);
-    final TextEditingController _newDescription =
+    final newDescription =
         TextEditingController(text: widget.card?.description);
-    final TextEditingController _newPageBookmark =
+    final newPageBookmark =
         TextEditingController(text: widget.card?.pageBookmark);
-    final TextEditingController _newComment =
-        TextEditingController(text: widget.card?.comment);
+    final newComment = TextEditingController(text: widget.card?.comment);
 
     return Scaffold(
       appBar: AppBar(
@@ -136,32 +132,32 @@ class _EditCardScreenState extends State<EditCardScreen> {
                           CustomTextFormField(
                             labelText: 'Наименование',
                             helperText: '',
-                            controller: _newTitle,
+                            controller: newTitle,
                           ),
                           CustomTextFormField(
                             labelText: 'Автор',
                             helperText: '',
-                            controller: _newAuthor,
+                            controller: newAuthor,
                           ),
                           CustomTextFormField(
                             labelText: 'Жанр *',
                             helperText: 'Необязательно для заполнения',
-                            controller: _newGenre,
+                            controller: newGenre,
                           ),
                           CustomTextFormField(
                             labelText: 'Год издания *',
                             helperText: 'Необязательно для заполнения',
-                            controller: _newPublishedYear,
+                            controller: newPublishedYear,
                           ),
                           CustomTextFormField(
                             labelText: 'Количество страниц *',
                             helperText: 'Необязательно для заполнения',
-                            controller: _newPagesQuantity,
+                            controller: newPagesQuantity,
                           ),
                           CustomTextFormField(
                             labelText: 'Описание *',
                             helperText: 'Необязательно для заполнения',
-                            controller: _newDescription,
+                            controller: newDescription,
                           ),
                           DropdownButtonFormField(
                             value: _selectedStatus,
@@ -189,12 +185,12 @@ class _EditCardScreenState extends State<EditCardScreen> {
                           CustomTextFormField(
                             labelText: 'Закладка на странице',
                             helperText: '',
-                            controller: _newPageBookmark,
+                            controller: newPageBookmark,
                           ),
                           CustomTextFormField(
                             labelText: 'Комментарии',
                             helperText: 'Необязательно для заполнения',
-                            controller: _newComment,
+                            controller: newComment,
                           ),
                           SizedBox(
                             height: 20.h,
@@ -203,26 +199,27 @@ class _EditCardScreenState extends State<EditCardScreen> {
                             builder: (context, state) {
                               return BottomButtonWidget(
                                 onPressed: () {
-                                  if (_newTitle.text.isNotEmpty &&
-                                      _newAuthor.text.isNotEmpty &&
-                                      _newPageBookmark.text.isNotEmpty) {
+                                  if (newTitle.text.isNotEmpty &&
+                                      newAuthor.text.isNotEmpty &&
+                                      newPageBookmark.text.isNotEmpty) {
                                     context.read<CardBloc>().add(
                                           UpdateCardEvent(
                                             updatedCard: BookCard(
                                               id: widget.card?.id,
-                                              imagePath: 'assets/images/splash_image.png',
-                                              title: _newTitle.text,
-                                              author: _newAuthor.text,
-                                              genre: _newGenre.text,
+                                              imagePath:
+                                                  'assets/images/splash_image.png',
+                                              title: newTitle.text,
+                                              author: newAuthor.text,
+                                              genre: newGenre.text,
                                               publishedYear:
-                                                  _newPublishedYear.text,
+                                                  newPublishedYear.text,
                                               pagesQuantity:
-                                                  _newPagesQuantity.text,
-                                              description: _newDescription.text,
+                                                  newPagesQuantity.text,
+                                              description: newDescription.text,
                                               status: _selectedStatus,
                                               pageBookmark:
-                                                  _newPageBookmark.text,
-                                              comment: _newComment.text,
+                                                  newPageBookmark.text,
+                                              comment: newComment.text,
                                             ),
                                           ),
                                         );
