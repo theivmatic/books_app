@@ -15,7 +15,6 @@ class AddCardScreen extends StatefulWidget {
 }
 
 class _AddCardScreenState extends State<AddCardScreen> {
-  
   //Form controllers
   final TextEditingController _title = TextEditingController();
   final TextEditingController _author = TextEditingController();
@@ -165,11 +164,6 @@ class _AddCardScreenState extends State<AddCardScreen> {
                         });
                       },
                     ),
-                    // CustomTextFormField(
-                    //   labelText: 'Статус',
-                    //   helperText: '',
-                    //   controller: _status,
-                    // ),
                     CustomTextFormField(
                       labelText: 'Закладка на странице',
                       helperText: '',
