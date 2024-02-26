@@ -34,6 +34,11 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
       itemBuilder: (context) => [
         PopupMenuItem<Widget>(
           onTap: () {
+            context.read<CardBloc>().add(
+                  FetchSpecificCardEvent(
+                    id: widget.widget.card.id ?? 0,
+                  ),
+                );
             Navigator.of(context).push(
               MaterialPageRoute<dynamic>(
                 builder: (context) => EditCardScreen(
