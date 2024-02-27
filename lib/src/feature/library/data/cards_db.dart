@@ -106,4 +106,16 @@ CREATE TABLE $tableCards (
 
     await db.close();
   }
+
+  Future<List<BookCard>> searchCards(String keyword) async {
+    final db = await instance.database;
+
+    final List<Map<String, dynamic>> result = await db.query(
+      tableCards,
+      where: 'title LIKE ?',
+      whereArgs: ['%$keyword%'],
+    );
+
+    return result as List<BookCard>;
+  }
 }
