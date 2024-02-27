@@ -10,7 +10,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
-    required this.onPressed, this.shape,
+    required this.onPressed,
+    this.shape,
   });
 
   @override
@@ -23,11 +24,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 5,
       shadowColor: AppColors.elevButtnShadow,
       shape: shape,
-      // RoundedRectangleBorder(
-      //   borderRadius: BorderRadius.circular(
-      //     20,
-      //   ),
-      // ),
       backgroundColor: AppColors.white,
       actions: [
         Padding(

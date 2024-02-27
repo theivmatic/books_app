@@ -55,7 +55,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
                       return Wrap(
                         children: [
                           SearchBarWidget(
-                            controller: searchController,
+                            // controller: searchController,
                           ),
                           CardWidget(
                             card: state.bookCard[index],

@@ -1,5 +1,6 @@
 // import 'package:books_app/src/core/router/navigation.dart';
 import 'package:books_app/src/core/bloc/observer.dart';
+import 'package:books_app/src/core/bloc/search/search_bloc.dart';
 import 'package:books_app/src/core/screens/splash.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:device_preview/device_preview.dart';
@@ -23,8 +24,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CardBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CardBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SearchBloc(),
+        ),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(390, 844),
         minTextAdapt: true,

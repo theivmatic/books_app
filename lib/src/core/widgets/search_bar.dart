@@ -2,14 +2,19 @@ import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SearchBarWidget extends StatelessWidget {
-  final TextEditingController controller;
+class SearchBarWidget extends StatefulWidget {
+  // final TextEditingController controller;
 
   const SearchBarWidget({
     super.key,
-    required this.controller,
+    // required this.controller,
   });
 
+  @override
+  State<SearchBarWidget> createState() => _SearchBarWidgetState();
+}
+
+class _SearchBarWidgetState extends State<SearchBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +30,7 @@ class SearchBarWidget extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
         child: TextFormField(
           style: TextStyles.inputText,
-          controller: controller,
+          // controller: widget.controller,
           decoration: InputDecoration(
             filled: true,
             fillColor: AppColors.searchBackgroundColor,
@@ -38,6 +43,14 @@ class SearchBarWidget extends StatelessWidget {
                 .copyWith(color: AppColors.searchIconColor),
             border: InputBorder.none,
           ),
+          // onChanged: (value) {
+          //   setState(() {
+          //     widget.controller.text = value;
+          //   });
+          //   context.read<SearchBloc>().add(
+          //         SearchWord(keyword: value),
+          //       );
+          // },
         ),
       ),
     );
