@@ -67,4 +67,18 @@ abstract class TextStyles {
       color: AppColors.black,
     ),
   );
+  static final bottomSheetButtonText = font(
+    textStyle: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 16.sp,
+      color: AppColors.yellow,
+    ),
+  );
+  static final bottomSheetTitleText = font(
+    textStyle: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 16.sp,
+      color: AppColors.black,
+    ),
+  );
 }
