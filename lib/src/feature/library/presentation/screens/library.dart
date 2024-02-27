@@ -15,6 +15,8 @@ class LibraryScreen extends StatefulWidget {
 }
 
 class _LibraryScreenState extends State<LibraryScreen> {
+  final searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,13 +53,15 @@ class _LibraryScreenState extends State<LibraryScreen> {
                   itemBuilder: (context, index) {
                     if (index == 0) {
                       return Wrap(
-                      children: [
-                        const SearchBarWidget(),
-                        CardWidget(
-                          card: state.bookCard[index],
-                        ),
-                      ],
-                    );
+                        children: [
+                          SearchBarWidget(
+                            controller: searchController,
+                          ),
+                          CardWidget(
+                            card: state.bookCard[index],
+                          ),
+                        ],
+                      );
                     }
                     return Wrap(
                       children: [

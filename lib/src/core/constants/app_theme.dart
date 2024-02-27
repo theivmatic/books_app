@@ -14,6 +14,9 @@ abstract class AppColors {
   static const Color elevButtnShadow = Color.fromRGBO(0, 0, 0, 0.25);
 
   static const Color backgroundColor = Color.fromRGBO(0, 0, 0, 0.1);
+
+  static const Color searchIconColor = Color.fromRGBO(0, 0, 0, 0.5);
+  static const Color searchBackgroundColor = Color.fromRGBO(0, 0, 0, 0.05);
 }
 
 abstract class TextStyles {

@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchBarWidget extends StatelessWidget {
-  const SearchBarWidget({super.key});
+  final TextEditingController controller;
+
+  const SearchBarWidget({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +20,26 @@ class SearchBarWidget extends StatelessWidget {
           bottomLeft: Radius.circular(20.r),
           bottomRight: Radius.circular(20.r),
         ),
-        
       ),
-      child: Text('1'),
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
+        child: TextFormField(
+          style: TextStyles.inputText,
+          controller: controller,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: AppColors.searchBackgroundColor,
+            prefixIcon: const Icon(
+              Icons.search,
+            ),
+            prefixIconColor: AppColors.searchIconColor,
+            hintText: 'Поиск',
+            hintStyle: TextStyles.bottomButtonText
+                .copyWith(color: AppColors.searchIconColor),
+            border: InputBorder.none,
+          ),
+        ),
+      ),
     );
   }
 }
