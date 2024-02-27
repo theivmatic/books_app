@@ -2,7 +2,6 @@ import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/widgets/custom_appbar.dart';
 // import 'package:books_app/src/core/widgets/search_bar.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
-import 'package:books_app/src/feature/library/presentation/widgets/card.dart';
 import 'package:books_app/src/feature/opened_books/presentation/widgets/opened_book.dart';
 import 'package:cupertino_modal_sheet/cupertino_modal_sheet.dart';
 import 'package:flutter/material.dart';

@@ -111,7 +111,7 @@ class _OpenedBookWidgetState extends State<OpenedBookWidget> {
               progressColor: AppColors.yellow,
               backgroundColor: AppColors.grey,
               maxSteps: 100,
-              currentStep: 50,
+              currentStep: percent,
               minHeight: 2.h,
             ),
           ],
