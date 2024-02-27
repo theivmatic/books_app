@@ -34,6 +34,7 @@ class _OpenedBookWidgetState extends State<OpenedBookWidget> {
       ),
       child: Material(
         elevation: 5,
+        borderRadius: BorderRadius.circular(20.r),
         child: InkWell(
           onTap: () {},
           child: Stack(

@@ -32,58 +32,62 @@ class _CardWidgetState extends State<CardWidget> {
       },
       child: Padding(
         padding: EdgeInsets.fromLTRB(20.w, 15.h, 20.w, 0),
-        child: Container(
-          padding: EdgeInsets.all(20.dg),
-          width: 350.w,
-          height: 140.h,
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(20.r),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: 80.w,
-                height: 100.h,
-                child: Image.asset(
-                  'assets/images/no_image.png',
-                  scale: 0.5,
+        child: Material(
+          elevation: 5,
+          borderRadius: BorderRadius.circular(20.r),
+          child: Container(
+            padding: EdgeInsets.all(20.dg),
+            width: 350.w,
+            height: 140.h,
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(20.r),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 80.w,
+                  height: 100.h,
+                  child: Image.asset(
+                    'assets/images/no_image.png',
+                    scale: 0.5,
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 10.w,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.card.genre ?? '',
-                      style: TextStyles.labelText,
-                      overflow: TextOverflow.clip,
-                    ),
-                    Text(
-                      widget.card.title ?? '',
-                      style: TextStyles.settingTileText,
-                      overflow: TextOverflow.clip,
-                    ),
-                    const Expanded(
-                      child: SizedBox(),
-                    ),
-                    Text(
-                      widget.card.author ?? '',
-                      style: TextStyles.labelText,
-                      overflow: TextOverflow.clip,
-                    ),
-                  ],
+                SizedBox(
+                  width: 10.w,
                 ),
-              ),
-              CardOptionsWidget(
-                widget: widget,
-              ),
-            ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.card.genre ?? '',
+                        style: TextStyles.labelText,
+                        overflow: TextOverflow.clip,
+                      ),
+                      Text(
+                        widget.card.title ?? '',
+                        style: TextStyles.settingTileText,
+                        overflow: TextOverflow.clip,
+                      ),
+                      const Expanded(
+                        child: SizedBox(),
+                      ),
+                      Text(
+                        widget.card.author ?? '',
+                        style: TextStyles.labelText,
+                        overflow: TextOverflow.clip,
+                      ),
+                    ],
+                  ),
+                ),
+                CardOptionsWidget(
+                  widget: widget,
+                ),
+              ],
+            ),
           ),
         ),
       ),
