@@ -130,16 +130,19 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       labelText: 'Год издания *',
                       helperText: 'Необязательно для заполнения',
                       controller: _publishedYear,
+                      keyboardType: TextInputType.number,
                     ),
                     CustomTextFormField(
                       labelText: 'Количество страниц',
                       helperText: '',
                       controller: _pagesQuantity,
+                      keyboardType: TextInputType.number,
                     ),
                     CustomTextFormField(
                       labelText: 'Описание *',
                       helperText: 'Необязательно для заполнения',
                       controller: _description,
+                      keyboardType: TextInputType.multiline,
                     ),
                     DropdownButtonFormField(
                       value: _selectedValue,
@@ -168,11 +171,13 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       labelText: 'Закладка на странице',
                       helperText: '',
                       controller: _pageBookmark,
+                      keyboardType: TextInputType.number,
                     ),
                     CustomTextFormField(
                       labelText: 'Комментарии',
                       helperText: 'Необязательно для заполнения',
                       controller: _comment,
+                      keyboardType: TextInputType.multiline,
                     ),
                     SizedBox(
                       height: 20.h,
