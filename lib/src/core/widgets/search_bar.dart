@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/library/data/cards_db.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
+import 'package:books_app/src/feature/library/presentation/widgets/card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -75,7 +76,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             ),
           ),
         ),
-        Flexible(
+        Expanded(
           child: FutureBuilder(
             future: databaseHelper.readAllCards(),
             builder: (
@@ -88,18 +89,17 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                   filteredList = list;
                   doItJustOnce = !doItJustOnce;
                 }
-                return SizedBox();
-                // return ListView.builder(
-                //   itemCount: filteredList.length,
-                //   itemBuilder: (context, index) {
-                //     return CardWidget(
-                //       card: widget.card,
-                //     );
-                //   },
-                // );
+                return ListView.builder(
+                  itemCount: filteredList.length,
+                  itemBuilder: (context, index) {
+                    return CardWidget(
+                      card: widget.card,
+                    );
+                  },
+                );
               }
-              return SizedBox();
-              // return const CircularProgressIndicator();
+
+              return const CircularProgressIndicator();
             },
           ),
         ),
