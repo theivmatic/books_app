@@ -56,9 +56,9 @@ class _LibraryScreenState extends State<LibraryScreen> {
                         );
                       },
                     ),
-                    // SearchBarWidget(
-                    //   card: state.bookCard,
-                    // ),
+                    SearchBarWidget(
+                      card: state.bookCard[0],
+                    ),
                   ],
                 );
               }

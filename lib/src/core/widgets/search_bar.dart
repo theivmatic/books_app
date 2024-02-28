@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/library/data/cards_db.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
@@ -69,10 +67,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                     .copyWith(color: AppColors.searchIconColor),
                 border: InputBorder.none,
               ),
-              onChanged: (value) {
-                filterList(value);
-                log(value);
-              },
+              onChanged: filterList,
             ),
           ),
         ),
@@ -83,7 +78,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               context,
               snapshot,
             ) {
-              if (snapshot.hasData) {
+              if (searchController.text.isNotEmpty) {
                 if (!doItJustOnce) {
                   list = snapshot.data!;
                   filteredList = list;
@@ -98,8 +93,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                   },
                 );
               }
-
-              return const CircularProgressIndicator();
+              return const SizedBox();
             },
           ),
         ),
