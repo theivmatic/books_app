@@ -132,8 +132,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       controller: _publishedYear,
                     ),
                     CustomTextFormField(
-                      labelText: 'Количество страниц *',
-                      helperText: 'Необязательно для заполнения',
+                      labelText: 'Количество страниц',
+                      helperText: '',
                       controller: _pagesQuantity,
                     ),
                     CustomTextFormField(
@@ -183,7 +183,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                           onPressed: () {
                             if (_title.text.isNotEmpty &&
                                 _author.text.isNotEmpty &&
-                                _pageBookmark.text.isNotEmpty) {
+                                _pageBookmark.text.isNotEmpty &&
+                                _pagesQuantity.text.isNotEmpty) {
                               context.read<CardBloc>().add(
                                     AddCardEvent(
                                       imagePath:
