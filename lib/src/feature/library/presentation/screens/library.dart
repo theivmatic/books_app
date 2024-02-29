@@ -129,7 +129,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
                         Expanded(
                           child: Container(
                             decoration: BoxDecoration(
-                              color: AppColors.grey,
+                              color: AppColors.yellow,
                               borderRadius: BorderRadius.circular(20.r),
                             ),
                             child: FutureBuilder(

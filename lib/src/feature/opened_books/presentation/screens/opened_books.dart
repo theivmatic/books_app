@@ -106,6 +106,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                               child: Row(
                                                 children: [
                                                   Radio(
+                                                    activeColor: AppColors.yellow,
                                                     value: state
                                                         .bookCard[index].id,
                                                     groupValue: selectedValue,
