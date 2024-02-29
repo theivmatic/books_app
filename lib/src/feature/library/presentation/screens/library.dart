@@ -1,6 +1,5 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/widgets/custom_appbar.dart';
-import 'package:books_app/src/core/widgets/search_bar.dart';
 import 'package:books_app/src/feature/library/data/cards_db.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
@@ -63,9 +62,6 @@ class _LibraryScreenState extends State<LibraryScreen> {
                 return const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // SearchBarWidget(
-                    //   card: state.bookCard[0],
-                    // ),
                     Center(
                       child: Text(
                         'Нажмите на кнопку сверху, чтобы добавить карточку',
@@ -133,7 +129,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
                         Expanded(
                           child: Container(
                             decoration: BoxDecoration(
-                              color: AppColors.black,
+                              color: AppColors.grey,
                               borderRadius: BorderRadius.circular(20.r),
                             ),
                             child: FutureBuilder(
@@ -164,9 +160,6 @@ class _LibraryScreenState extends State<LibraryScreen> {
                         ),
                       ],
                     ),
-                    // SearchBarWidget(
-                    //   card: state.bookCard[1],
-                    // ),
                   ],
                 );
               }
