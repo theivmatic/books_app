@@ -87,8 +87,13 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 return ListView.builder(
                   itemCount: filteredList.length,
                   itemBuilder: (context, index) {
-                    return CardWidget(
-                      card: widget.card,
+                    return Container(
+                      decoration: const BoxDecoration(
+                        color: AppColors.grey,
+                      ),
+                      child: CardWidget(
+                        card: widget.card,
+                      ),
                     );
                   },
                 );
