@@ -29,8 +29,9 @@ class _OpenedBookWidgetState extends State<OpenedBookWidget> {
     final counter = '$percent%';
 
     return Padding(
-      padding: EdgeInsets.all(
-        20.dg,
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.w,
+        vertical: 10.h,
       ),
       child: Material(
         elevation: 5,
