@@ -9,8 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class OpenedBooksScreen extends StatelessWidget {
+class OpenedBooksScreen extends StatefulWidget {
   const OpenedBooksScreen({super.key});
+
+  @override
+  State<OpenedBooksScreen> createState() => _OpenedBooksScreenState();
+}
+
+class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
+  int? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +104,16 @@ class OpenedBooksScreen extends StatelessWidget {
                                             return FittedBox(
                                               child: Row(
                                                 children: [
-                                                  Icon(Icons.abc),
+                                                  Radio(
+                                                    value: state
+                                                        .bookCard[index].id,
+                                                    groupValue: selectedValue,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        selectedValue = value;
+                                                      });
+                                                    },
+                                                  ),
                                                   CardWidget(
                                                     card: state.bookCard[index],
                                                   ),
@@ -118,19 +134,6 @@ class OpenedBooksScreen extends StatelessWidget {
                       );
                     },
                   );
-                  // showBottomSheet<void>(
-                  //   enableDrag: true,
-                  //   context: context,
-                  //   builder: (context) {
-                  //     return Container(
-                  //       width: 350,
-                  //       height: 350,
-                  //       decoration: BoxDecoration(
-                  //         color: AppColors.red,
-                  //       ),
-                  //     );
-                  //   },
-                  // );
                 },
                 child: Text(
                   'Добавить из библиотеки',
