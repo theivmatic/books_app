@@ -94,8 +94,15 @@ class OpenedBooksScreen extends StatelessWidget {
                                           shrinkWrap: true,
                                           itemCount: state.bookCard.length,
                                           itemBuilder: (context, index) {
-                                            return CardWidget(
-                                              card: state.bookCard[index],
+                                            return FittedBox(
+                                              child: Row(
+                                                children: [
+                                                  Icon(Icons.abc),
+                                                  CardWidget(
+                                                    card: state.bookCard[index],
+                                                  ),
+                                                ],
+                                              ),
                                             );
                                           },
                                         ),
