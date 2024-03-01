@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class OpenedBookWidget extends StatefulWidget {
+  
   final BookCard card;
 
   const OpenedBookWidget({
@@ -33,93 +34,90 @@ class _OpenedBookWidgetState extends State<OpenedBookWidget> {
         horizontal: 20.w,
         vertical: 10.h,
       ),
-      child: Material(
-        elevation: 5,
-        borderRadius: BorderRadius.circular(20.r),
-        child: InkWell(
-          onTap: () {},
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                width: 350.w,
-                height: 190.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.r),
-                ),
-                child: Image.asset(
-                  'assets/images/upload_image.png',
-                  scale: 0.5,
-                  fit: BoxFit.fill,
-                ),
+      child: InkWell(
+        onTap: () {},
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              width: 350.w,
+              height: 190.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r),
               ),
-              Positioned(
-                bottom: 0,
-                child: Container(
-                  padding: EdgeInsets.all(10.dg),
-                  width: 350.w,
-                  height: 95.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(
-                        20.r,
-                      ),
-                      bottomRight: Radius.circular(
-                        20.r,
-                      ),
+              child: Image.asset(
+                'assets/images/upload_image.png',
+                scale: 0.5,
+                fit: BoxFit.fill,
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              child: Container(
+                padding: EdgeInsets.all(10.dg),
+                width: 350.w,
+                height: 95.h,
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(
+                      20.r,
+                    ),
+                    bottomRight: Radius.circular(
+                      20.r,
                     ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.card.author ?? '',
-                            style: TextStyles.labelText,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.card.author ?? '',
+                          style: TextStyles.labelText,
+                        ),
+                        Text(
+                          widget.card.title ?? '',
+                          style: TextStyles.settingTileText,
+                        ),
+                        const Expanded(
+                          child: SizedBox(),
+                        ),
+                        Text(
+                          'Закладка на странице:',
+                          style: TextStyles.labelText,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          counter,
+                          style: TextStyles.labelText.copyWith(
+                            color: AppColors.yellow,
                           ),
-                          Text(
-                            widget.card.title ?? '',
-                            style: TextStyles.settingTileText,
-                          ),
-                          const Expanded(
-                            child: SizedBox(),
-                          ),
-                          Text(
-                            'Закладка на странице:',
-                            style: TextStyles.labelText,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            counter,
-                            style: TextStyles.labelText.copyWith(
-                              color: AppColors.yellow,
-                            ),
-                          ),
-                          const Expanded(
-                            child: SizedBox(),
-                          ),
-                          Text(widget.card.pageBookmark ?? '0'),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                        const Expanded(
+                          child: SizedBox(),
+                        ),
+                        Text(widget.card.pageBookmark ?? '0'),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              LinearProgressBar(
-                progressColor: AppColors.yellow,
-                backgroundColor: AppColors.grey,
-                maxSteps: 100,
-                currentStep: percent,
-                minHeight: 2.h,
-              ),
-            ],
-          ),
+            ),
+            LinearProgressBar(
+              progressColor: AppColors.yellow,
+              backgroundColor: AppColors.grey,
+              maxSteps: 100,
+              currentStep: percent,
+              minHeight: 2.h,
+            ),
+            
+          ],
         ),
       ),
     );

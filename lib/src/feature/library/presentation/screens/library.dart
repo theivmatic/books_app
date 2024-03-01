@@ -17,6 +17,7 @@ class LibraryScreen extends StatefulWidget {
 }
 
 class _LibraryScreenState extends State<LibraryScreen> {
+  //Search
   final searchController = TextEditingController();
   final databaseHelper = CardsDatabase.instance;
   final String userSearchInput = '';

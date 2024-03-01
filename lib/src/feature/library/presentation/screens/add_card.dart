@@ -157,7 +157,13 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       ),
                       items: _statusList.map((e) {
                         return DropdownMenuItem(
-                          child: Text(e),
+                          child: Wrap(
+                            alignment: WrapAlignment.center,
+                            children: [
+                              Text(e),
+                              const Divider(),
+                            ],
+                          ),
                           value: e,
                         );
                       }).toList(),
