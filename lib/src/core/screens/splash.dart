@@ -1,0 +1,32 @@
+import 'package:books_app/src/core/router/navigation.dart';
+import 'package:flutter/material.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future<dynamic>.delayed(const Duration(seconds: 1)).then(
+      (value) => Navigator.of(context).pushReplacement(
+        MaterialPageRoute<dynamic>(
+          builder: (context) => const Navigation(),
+        ),
+      ),
+    );
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Image.asset('assets/images/splash_image.png'),
+      ),
+    );
+  }
+}
