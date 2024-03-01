@@ -22,7 +22,7 @@ class CardOptionsWidget extends StatefulWidget {
 class _CardOptionsWidgetState extends State<CardOptionsWidget> {
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton(
+    return PopupMenuButton<Widget>(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.r),
       ),
@@ -52,6 +52,7 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
             style: TextStyles.popupItemText,
           ),
         ),
+        const PopupMenuDivider(),
         PopupMenuItem<Widget>(
           onTap: () {
             showCupertinoDialog<Widget>(
