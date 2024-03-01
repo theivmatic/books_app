@@ -65,9 +65,14 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
                     12.r,
                   ),
                 ),
-                title: Text(
-                  'Вы уверены, что хотите удалить карточку?',
-                  style: TextStyles.popupItemText,
+                title: Column(
+                  children: [
+                    Text(
+                      'Вы уверены, что хотите удалить карточку?',
+                      style: TextStyles.popupItemText,
+                    ),
+                    const Divider(),
+                  ],
                 ),
                 actions: [
                   TextButton(
@@ -87,6 +92,7 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
                       ),
                     ),
                   ),
+                  const VerticalDivider(),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();

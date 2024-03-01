@@ -47,7 +47,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
       appBar: CustomAppBar(
         title: 'Открытые книги',
         onPressed: () {
-          showMenu(
+          showMenu<Widget>(
             context: context,
             position: const RelativeRect.fromLTRB(1, 0, 0, 0),
             shape: RoundedRectangleBorder(
@@ -165,6 +165,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                   style: TextStyles.popupItemText,
                 ),
               ),
+              const PopupMenuDivider(),
               PopupMenuItem<Widget>(
                 onTap: () {
                   Navigator.of(context).push(
