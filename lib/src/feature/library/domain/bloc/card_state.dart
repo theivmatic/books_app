@@ -35,7 +35,7 @@ class DisplaySpecificCards extends CardBlocState {
 }
 
 class DisplayFetchedFromLibraryCard extends CardBlocState {
-  final BookCard bookCard;
+  final List<BookCard> bookCard;
 
   const DisplayFetchedFromLibraryCard({
     required this.bookCard,

@@ -106,7 +106,15 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                 TextStyles.bottomSheetTitleText,
                                           ),
                                           TextButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              // context.read<CardBloc>().add(
+                                              //   //TODO: Add id
+                                              //       const FetchFromLibraryEvent(
+                                              //         id: 0,
+                                              //       ),
+                                              //     );
+                                              // Navigator.of(context).pop();
+                                            },
                                             child: Text(
                                               'Готово',
                                               style: TextStyles

@@ -47,10 +47,10 @@ class CardBloc extends Bloc<CardBlocEvent, CardBlocState> {
     });
 
     on<FetchFromLibraryEvent>((event, emit) async {
-      final bookCard = await CardsDatabase.instance.readCard(id: event.id);
+      bookCards = await CardsDatabase.instance.readAllCards();
       emit(
         DisplayFetchedFromLibraryCard(
-          bookCard: bookCard,
+          bookCard: bookCards,
         ),
       );
     });
