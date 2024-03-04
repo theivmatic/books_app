@@ -209,9 +209,6 @@ class _AddCardScreenState extends State<AddCardScreen> {
                                       status: _selectedValue,
                                       pageBookmark: _pageBookmark.text,
                                       comment: _comment.text,
-                                      //TODO: put values
-                                      opened: false,
-                                      willRead: false,
                                     ),
                                   );
                               context.read<CardBloc>().add(

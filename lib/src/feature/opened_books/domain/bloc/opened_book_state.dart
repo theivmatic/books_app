@@ -2,20 +2,17 @@ part of 'opened_book_bloc.dart';
 
 sealed class OpenedBookBlocState extends Equatable {
   const OpenedBookBlocState();
-  
+
   @override
   List<Object> get props => [];
 }
 
 final class OpenedBookBlocInitialState extends OpenedBookBlocState {}
 
-class DisplayFetchedFromLibraryCard extends OpenedBookBlocState {
-  final List<BookCard> bookCard;
+final class OpenedBookBlocLoadedState extends OpenedBookBlocState {
+  final List<BookCard> openedBooks;
 
-  const DisplayFetchedFromLibraryCard({
-    required this.bookCard,
+  const OpenedBookBlocLoadedState({
+    required this.openedBooks,
   });
-
-  @override
-  List<Object> get props => [bookCard];
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/widgets/custom_appbar.dart';
 import 'package:books_app/src/feature/library/data/cards_db.dart';
@@ -40,6 +42,16 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
           )
           .toList();
     });
+  }
+
+  final List<BookCard> selectedBooks = [];
+
+  @override
+  void initState() {
+    context.read<OpenedBookBloc>().add(
+          const DisplayOpenedBooks(),
+        );
+    super.initState();
   }
 
   @override
@@ -108,13 +120,16 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              // context.read<OpenedBookBloc>().add(
-                                              //   //TODO: Add id
-                                              //       const AddFromLibraryEvent(
-                                              //         id: state.bookCard[index].id,
-                                              //       ),
-                                              //     );
+                                              context
+                                                  .read<OpenedBookBloc>()
+                                                  .add(
+                                                    DisplayOpenedBooks(
+                                                      openedBooks:
+                                                          selectedBooks,
+                                                    ),
+                                                  );
                                               Navigator.of(context).pop();
+                                              log(selectedBooks.toString());
                                             },
                                             child: Text(
                                               'Готово',
@@ -146,6 +161,22 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                       setState(() {
                                                         selectedValue = value;
                                                       });
+                                                      if (selectedValue ==
+                                                          value) {
+                                                        selectedBooks.add(
+                                                          state.bookCard[index],
+                                                        );
+                                                      } else {
+                                                        if (selectedBooks
+                                                            .contains(
+                                                          state.bookCard[index],
+                                                        )) {
+                                                          selectedBooks.remove(
+                                                            state.bookCard[
+                                                                index],
+                                                          );
+                                                        }
+                                                      }
                                                     },
                                                   ),
                                                   CardWidget(
@@ -197,114 +228,99 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
       ),
       backgroundColor: AppColors.backgroundColor,
       body: BlocBuilder<OpenedBookBloc, OpenedBookBlocState>(
-        builder: (context, state) {
-          if (state is OpenedBookBlocInitialState) {
-            context.read<OpenedBookBloc>().add(
-                  const FetchOpenedBooksEvent(),
-                );
-          }
-          if (state is DisplayFetchedFromLibraryCard) {
-            if (state.bookCard.isEmpty) {
-              return const Center(
-                child: Text(
-                  'Нажмите на кнопку сверху, чтобы добавить карточку',
-                ),
-              );
-            } else {
-              return Stack(
-                children: [
-                  ListView.builder(
-                    itemCount: state.bookCard.length,
-                    itemBuilder: (context, index) {
-                      if (index == 0) {
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: 65.h,
-                            ),
-                            OpenedBookWidget(
-                              card: state.bookCard[index],
-                            ),
-                          ],
-                        );
-                      }
-                      return OpenedBookWidget(
-                        card: state.bookCard[index],
+        builder: (context, state) => switch (state) {
+          OpenedBookBlocLoadedState() => Stack(
+              children: [
+                ListView.builder(
+                  itemCount: state.openedBooks.length,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return Column(
+                        children: [
+                          SizedBox(
+                            height: 65.h,
+                          ),
+                          OpenedBookWidget(
+                            card: state.openedBooks[index],
+                          ),
+                        ],
                       );
-                    },
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20.r),
-                            bottomRight: Radius.circular(20.r),
-                          ),
+                    }
+                    return OpenedBookWidget(
+                      card: state.openedBooks[index],
+                    );
+                  },
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20.r),
+                          bottomRight: Radius.circular(20.r),
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
-                          child: TextFormField(
-                            style: TextStyles.inputText,
-                            controller: searchController,
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: AppColors.searchBackgroundColor,
-                              prefixIcon: const Icon(
-                                Icons.search,
-                              ),
-                              prefixIconColor: AppColors.searchIconColor,
-                              hintText: 'Поиск',
-                              hintStyle: TextStyles.bottomButtonText
-                                  .copyWith(color: AppColors.searchIconColor),
-                              border: InputBorder.none,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
+                        child: TextFormField(
+                          style: TextStyles.inputText,
+                          controller: searchController,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: AppColors.searchBackgroundColor,
+                            prefixIcon: const Icon(
+                              Icons.search,
                             ),
-                            onChanged: filterList,
+                            prefixIconColor: AppColors.searchIconColor,
+                            hintText: 'Поиск',
+                            hintStyle: TextStyles.bottomButtonText
+                                .copyWith(color: AppColors.searchIconColor),
+                            border: InputBorder.none,
                           ),
+                          onChanged: filterList,
                         ),
                       ),
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.yellow,
-                            borderRadius: BorderRadius.circular(20.r),
-                          ),
-                          child: FutureBuilder(
-                            future: databaseHelper.readAllCards(),
-                            builder: (
-                              context,
-                              snapshot,
-                            ) {
-                              if (searchController.text.isNotEmpty) {
-                                if (!doItJustOnce) {
-                                  list = snapshot.data!;
-                                  filteredList = list;
-                                  doItJustOnce = !doItJustOnce;
-                                }
-                                return ListView.builder(
-                                  itemCount: filteredList.length,
-                                  itemBuilder: (context, index) {
-                                    return OpenedBookWidget(
-                                      card: filteredList[index],
-                                    );
-                                  },
-                                );
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.yellow,
+                          borderRadius: BorderRadius.circular(20.r),
+                        ),
+                        child: FutureBuilder(
+                          future: databaseHelper.readAllCards(),
+                          builder: (
+                            context,
+                            snapshot,
+                          ) {
+                            if (searchController.text.isNotEmpty) {
+                              if (!doItJustOnce) {
+                                list = snapshot.data!;
+                                filteredList = list;
+                                doItJustOnce = !doItJustOnce;
                               }
-                              return const SizedBox();
-                            },
-                          ),
+                              return ListView.builder(
+                                itemCount: filteredList.length,
+                                itemBuilder: (context, index) {
+                                  return OpenedBookWidget(
+                                    card: filteredList[index],
+                                  );
+                                },
+                              );
+                            }
+                            return const SizedBox();
+                          },
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              );
-            }
-          }
-          return const Center();
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          _ => const Center(child: CircularProgressIndicator()),
         },
       ),
     );

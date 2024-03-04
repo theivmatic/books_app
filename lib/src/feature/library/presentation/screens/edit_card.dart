@@ -235,9 +235,6 @@ class _EditCardScreenState extends State<EditCardScreen> {
                                               pageBookmark:
                                                   newPageBookmark.text,
                                               comment: newComment.text,
-                                              //TODO: put values
-                                              opened: false,
-                                              willRead: false,
                                             ),
                                           ),
                                         );

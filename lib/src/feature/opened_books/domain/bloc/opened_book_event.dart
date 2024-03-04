@@ -7,14 +7,10 @@ sealed class OpenedBookBlocEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchOpenedBooksEvent extends OpenedBookBlocEvent {
-  const FetchOpenedBooksEvent();
-}
+class DisplayOpenedBooks extends OpenedBookBlocEvent {
+  final List<BookCard>? openedBooks;
 
-class AddFromLibraryEvent extends OpenedBookBlocEvent {
-  final int id;
-
-  const AddFromLibraryEvent({
-    required this.id,
+  const DisplayOpenedBooks({
+    this.openedBooks,
   });
 }

@@ -13,8 +13,6 @@ class CardFields {
     status,
     pageBookmark,
     comment,
-    opened,
-    willRead,
   ];
 
   static const String id = '_id';
@@ -28,8 +26,6 @@ class CardFields {
   static const String status = 'status';
   static const String pageBookmark = 'pageBookmark';
   static const String comment = 'comment';
-  static const String opened = 'opened';
-  static const String willRead = 'willRead';
 }
 
 class BookCard {
@@ -44,8 +40,6 @@ class BookCard {
   final String? status;
   final String? pageBookmark;
   final String? comment;
-  final bool opened;
-  final bool willRead;
 
   BookCard({
     this.id,
@@ -59,8 +53,6 @@ class BookCard {
     required this.status,
     required this.pageBookmark,
     required this.comment,
-    required this.opened,
-    required this.willRead,
   });
 
   BookCard copy({
@@ -75,8 +67,6 @@ class BookCard {
     String? status,
     String? pageBookmark,
     String? comment,
-    bool? opened,
-    bool? willRead,
   }) =>
       BookCard(
         id: id ?? this.id,
@@ -90,8 +80,6 @@ class BookCard {
         status: status ?? this.status,
         pageBookmark: pageBookmark ?? this.pageBookmark,
         comment: comment ?? this.comment,
-        opened: opened ?? this.opened,
-        willRead: willRead ?? this.willRead,
       );
 
   static BookCard fromJson(Map<String, Object?> json) => BookCard(
@@ -106,8 +94,6 @@ class BookCard {
         status: json[CardFields.status] as String,
         pageBookmark: json[CardFields.pageBookmark] as String,
         comment: json[CardFields.comment] as String,
-        opened: json[CardFields.opened] == 1,
-        willRead: json[CardFields.willRead] == 1,
       );
 
   Map<String, Object?> toJson() => {
@@ -122,7 +108,5 @@ class BookCard {
         CardFields.status: status,
         CardFields.pageBookmark: pageBookmark,
         CardFields.comment: comment,
-        CardFields.opened: opened ? 1 : 0,
-        CardFields.willRead: willRead ? 1 : 0,
       };
 }

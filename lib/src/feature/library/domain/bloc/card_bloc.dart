@@ -23,8 +23,6 @@ class CardBloc extends Bloc<CardBlocEvent, CardBlocState> {
           status: event.status,
           pageBookmark: event.pageBookmark,
           comment: event.comment,
-          opened: event.opened,
-          willRead: event.willRead,
         ),
       );
     });
