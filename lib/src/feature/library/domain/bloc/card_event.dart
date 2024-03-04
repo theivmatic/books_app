@@ -16,6 +16,8 @@ class AddCardEvent extends CardBlocEvent {
   final String? status;
   final String? pageBookmark;
   final String? comment;
+  final bool opened;
+  final bool willRead;
 
   const AddCardEvent({
     required this.imagePath,
@@ -28,6 +30,8 @@ class AddCardEvent extends CardBlocEvent {
     required this.status,
     required this.pageBookmark,
     required this.comment,
+    required this.opened,
+    required this.willRead,
   });
 
   @override
