@@ -84,14 +84,3 @@ class DeleteCardEvent extends CardBlocEvent {
   @override
   List<Object?> get props => [id];
 }
-
-class FetchFromLibraryEvent extends CardBlocEvent {
-  final int id;
-
-  const FetchFromLibraryEvent({
-    required this.id,
-  });
-
-  @override
-  List<Object?> get props => [id];
-}
