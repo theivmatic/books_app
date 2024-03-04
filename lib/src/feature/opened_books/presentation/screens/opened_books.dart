@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:books_app/src/core/constants/app_theme.dart';
@@ -13,6 +14,7 @@ import 'package:cupertino_modal_sheet/cupertino_modal_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OpenedBooksScreen extends StatefulWidget {
   const OpenedBooksScreen({super.key});
@@ -44,13 +46,42 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
     });
   }
 
-  final List<BookCard> selectedBooks = [];
+  List<BookCard> selectedBooks = [];
+
+  late SharedPreferences storage;
+
+  Future getSharedPreferences() async {
+    storage = await SharedPreferences.getInstance();
+    readFromStorage();
+  }
+
+  void saveToStorage() {
+    final bookCardStringList =
+        selectedBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
+    storage.setStringList('BookCards', bookCardStringList);
+  }
+
+  void readFromStorage() {
+    final bookCardStringList = storage.getStringList('BookCards');
+
+    if (bookCardStringList != null) {
+      selectedBooks = bookCardStringList
+          .map(
+            (bookCard) => BookCard.fromJson(
+              json.decode(bookCard) as Map<String, Object?>,
+            ),
+          )
+          .toList();
+    }
+    setState(() {});
+  }
 
   @override
   void initState() {
     context.read<OpenedBookBloc>().add(
           const DisplayOpenedBooks(),
         );
+    getSharedPreferences();
     super.initState();
   }
 
