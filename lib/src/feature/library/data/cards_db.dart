@@ -30,6 +30,7 @@ class CardsDatabase {
   Future<dynamic> _createDB(Database db, int version) async {
     const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     const textType = 'TEXT NOT NULL';
+    const boolType = 'BOOLEAN NOT NULL';
 
     await db.execute('''
 CREATE TABLE $tableCards (
@@ -43,7 +44,9 @@ CREATE TABLE $tableCards (
   ${CardFields.description} $textType,
   ${CardFields.status} $textType,
   ${CardFields.pageBookmark} $textType,
-  ${CardFields.comment} $textType
+  ${CardFields.comment} $textType,
+  ${CardFields.opened} $boolType,
+  ${CardFields.willRead} $boolType
 )
 ''');
   }
