@@ -9,7 +9,16 @@ part 'opened_book_state.dart';
 class OpenedBookBloc extends Bloc<OpenedBookBlocEvent, OpenedBookBlocState> {
   OpenedBookBloc() : super(OpenedBookBlocInitialState()) {
     var bookCards = <BookCard>[];
-    on<FetchFromLibraryEvent>((event, emit) async {
+    on<AddFromLibraryEvent>((event, emit) async {
+      bookCards = await CardsDatabase.instance.readAllCards();
+      emit(
+        DisplayFetchedFromLibraryCard(
+          bookCard: bookCards,
+        ),
+      );
+    });
+
+    on<FetchOpenedBooksEvent>((event, emit) async {
       bookCards = await CardsDatabase.instance.readAllCards();
       emit(
         DisplayFetchedFromLibraryCard(

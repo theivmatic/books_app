@@ -33,14 +33,3 @@ class DisplaySpecificCards extends CardBlocState {
   @override
   List<Object> get props => [bookCard];
 }
-
-class DisplayFetchedFromLibraryCard extends CardBlocState {
-  final List<BookCard> bookCard;
-
-  const DisplayFetchedFromLibraryCard({
-    required this.bookCard,
-  });
-
-  @override
-  List<Object> get props => [bookCard];
-}

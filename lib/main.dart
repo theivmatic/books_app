@@ -3,6 +3,7 @@
 import 'package:books_app/src/core/bloc/observer.dart';
 import 'package:books_app/src/core/screens/splash.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
+import 'package:books_app/src/feature/opened_books/domain/bloc/opened_book_bloc.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +29,9 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => CardBloc(),
+        ),
+        BlocProvider(
+          create: (context) => OpenedBookBloc(),
         ),
       ],
       child: ScreenUtilInit(

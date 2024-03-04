@@ -5,6 +5,7 @@ import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
 import 'package:books_app/src/feature/library/presentation/screens/add_card.dart';
 import 'package:books_app/src/feature/library/presentation/widgets/card.dart';
+import 'package:books_app/src/feature/opened_books/domain/bloc/opened_book_bloc.dart';
 import 'package:books_app/src/feature/opened_books/presentation/widgets/opened_book.dart';
 import 'package:cupertino_modal_sheet/cupertino_modal_sheet.dart';
 import 'package:flutter/material.dart';
@@ -107,13 +108,13 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              // context.read<CardBloc>().add(
+                                              // context.read<OpenedBookBloc>().add(
                                               //   //TODO: Add id
-                                              //       const FetchFromLibraryEvent(
-                                              //         id: 0,
+                                              //       const AddFromLibraryEvent(
+                                              //         id: state.bookCard[index].id,
                                               //       ),
                                               //     );
-                                              // Navigator.of(context).pop();
+                                              Navigator.of(context).pop();
                                             },
                                             child: Text(
                                               'Готово',
@@ -195,14 +196,14 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
         },
       ),
       backgroundColor: AppColors.backgroundColor,
-      body: BlocBuilder<CardBloc, CardBlocState>(
+      body: BlocBuilder<OpenedBookBloc, OpenedBookBlocState>(
         builder: (context, state) {
-          if (state is CardBlocInitialState) {
-            context.read<CardBloc>().add(
-                  const FetchCardsEvent(),
+          if (state is OpenedBookBlocInitialState) {
+            context.read<OpenedBookBloc>().add(
+                  const FetchOpenedBooksEvent(),
                 );
           }
-          if (state is DisplayCards) {
+          if (state is DisplayFetchedFromLibraryCard) {
             if (state.bookCard.isEmpty) {
               return const Center(
                 child: Text(
