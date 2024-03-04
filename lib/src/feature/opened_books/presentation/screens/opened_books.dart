@@ -46,13 +46,15 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
     });
   }
 
+  //Strorage
   List<BookCard> selectedBooks = [];
 
   late SharedPreferences storage;
 
-  Future getSharedPreferences() async {
+  Future<dynamic> getSharedPreferences() async {
     storage = await SharedPreferences.getInstance();
     readFromStorage();
+    setState(() {});
   }
 
   void saveToStorage() {
@@ -78,10 +80,10 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
 
   @override
   void initState() {
+    getSharedPreferences();
     context.read<OpenedBookBloc>().add(
           const DisplayOpenedBooks(),
         );
-    getSharedPreferences();
     super.initState();
   }
 
@@ -159,6 +161,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                           selectedBooks,
                                                     ),
                                                   );
+                                              saveToStorage();
                                               Navigator.of(context).pop();
                                               log(selectedBooks.toString());
                                             },
