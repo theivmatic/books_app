@@ -10,9 +10,9 @@ sealed class WillReadBlocState extends Equatable {
 final class WillReadBlocInitialState extends WillReadBlocState {}
 
 final class WillReadBlocLoadedState extends WillReadBlocState {
-  final List<BookCard> openedBooks;
+  final List<BookCard> willReadBooks;
 
   const WillReadBlocLoadedState({
-    required this.openedBooks,
+    required this.willReadBooks,
   });
 }

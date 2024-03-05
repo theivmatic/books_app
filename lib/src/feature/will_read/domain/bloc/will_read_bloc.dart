@@ -7,6 +7,16 @@ part 'will_read_state.dart';
 
 class WillReadBloc extends Bloc<WillReadBlocEvent, WillReadBlocState> {
   WillReadBloc() : super(WillReadBlocInitialState()) {
-    on<WillReadBlocEvent>((event, emit) {});
+    var bookCards = <BookCard>[];
+    on<DisplayWillReadBooks>((event, emit) {
+      bookCards = event.willReadBooks ?? bookCards;
+      
+      emit(
+        WillReadBlocInitialState(),
+      );
+      emit(
+        WillReadBlocLoadedState(willReadBooks: bookCards),
+      );
+    });
   }
 }

@@ -8,9 +8,9 @@ sealed class WillReadBlocEvent extends Equatable {
 }
 
 class DisplayWillReadBooks extends WillReadBlocEvent {
-  final List<BookCard>? openedBooks;
+  final List<BookCard>? willReadBooks;
 
   const DisplayWillReadBooks({
-    this.openedBooks,
+    this.willReadBooks,
   });
 }
