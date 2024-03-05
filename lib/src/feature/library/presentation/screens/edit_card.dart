@@ -48,6 +48,8 @@ class _EditCardScreenState extends State<EditCardScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        surfaceTintColor: AppColors.white,
         leading: IconButton(
           onPressed: () {
             context.read<CardBloc>().add(

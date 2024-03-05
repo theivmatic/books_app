@@ -38,6 +38,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        surfaceTintColor: AppColors.white,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();

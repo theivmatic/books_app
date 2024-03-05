@@ -22,6 +22,15 @@ class ArticleDetailsScreen extends StatelessWidget {
           ],
         ),
         centerTitle: false,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.yellow,
+          ),
+        ),
       ),
     );
   }
