@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/core/widgets/custom_appbar.dart';
@@ -151,17 +152,17 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              // context
-                                              //     .read<OpenedBookBloc>()
-                                              //     .add(
-                                              //       DisplayOpenedBooks(
-                                              //         openedBooks:
-                                              //             selectedBooks,
-                                              //       ),
-                                              //     );
-                                              // saveToStorage();
-                                              // Navigator.of(context).pop();
-                                              // log(selectedBooks.toString());
+                                              context
+                                                  .read<WillReadBloc>()
+                                                  .add(
+                                                    DisplayWillReadBooks(
+                                                      willReadBooks:
+                                                          selectedBooks,
+                                                    ),
+                                                  );
+                                              saveToStorage();
+                                              Navigator.of(context).pop();
+                                              log(selectedBooks.toString());
                                             },
                                             child: Text(
                                               'Готово',
