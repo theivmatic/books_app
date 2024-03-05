@@ -259,12 +259,112 @@ class _WillReadScreenState extends State<WillReadScreen> {
         },
       ),
       backgroundColor: AppColors.backgroundColor,
-      body: 
-      // const Center(
-      //   child: Text('Will read'),
-      // ),
+      body:
+          // const Center(
+          //   child: Text('Will read'),
+          // ),
 
-      BlocBuilder<WillReadBloc, WillReadBlocState>(builder: (context, state) {}),
+          BlocBuilder<WillReadBloc, WillReadBlocState>(
+        builder: (context, state) => switch (state) {
+          WillReadBlocInitialState() => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            WillReadBlocLoadedState() => Stack(
+              children: [
+                ListView.builder(
+                  itemCount: state.willReadBooks.length,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return Column(
+                        children: [
+                          SizedBox(
+                            height: 65.h,
+                          ),
+                          CardWidget(
+                            card: state.willReadBooks[index],
+                          ),
+                        ],
+                      );
+                    }
+                    return CardWidget(
+                      card: state.willReadBooks[index],
+                    );
+                  },
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20.r),
+                          bottomRight: Radius.circular(20.r),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
+                        child: TextFormField(
+                          style: TextStyles.inputText,
+                          controller: searchController,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: AppColors.searchBackgroundColor,
+                            prefixIcon: const Icon(
+                              Icons.search,
+                            ),
+                            prefixIconColor: AppColors.searchIconColor,
+                            hintText: 'Поиск',
+                            hintStyle: TextStyles.bottomButtonText
+                                .copyWith(color: AppColors.searchIconColor),
+                            border: InputBorder.none,
+                          ),
+                          onChanged: filterList,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.yellow,
+                          borderRadius: BorderRadius.circular(20.r),
+                        ),
+                        child: FutureBuilder(
+                          future: databaseHelper.readAllCards(),
+                          builder: (
+                            context,
+                            snapshot,
+                          ) {
+                            if (searchController.text.isNotEmpty) {
+                              if (!doItJustOnce) {
+                                list = snapshot.data!;
+                                filteredList = list;
+                                doItJustOnce = !doItJustOnce;
+                              }
+                              return ListView.builder(
+                                itemCount: filteredList.length,
+                                itemBuilder: (context, index) {
+                                  return CardWidget(
+                                    card: filteredList[index],
+                                  );
+                                },
+                              );
+                            }
+                            return const SizedBox();
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          _ => const Center(
+              child: CircularProgressIndicator(),
+            ),
+        },
+      ),
     );
   }
 }
