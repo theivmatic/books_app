@@ -1,4 +1,5 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+import 'package:books_app/src/feature/about_books/presentation/widgets/article_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -72,9 +73,14 @@ class ArticleDetailsScreen extends StatelessWidget {
               height: 10.h,
             ),
             Container(
+              width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.r),
                 color: AppColors.white,
+              ),
+              child: const ArticleDetailWidget(
+                title: 'title',
+                content: 'content',
               ),
             ),
           ],

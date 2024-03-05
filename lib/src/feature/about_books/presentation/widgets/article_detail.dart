@@ -1,10 +1,29 @@
+import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ArticleDetailWidget extends StatelessWidget {
-  const ArticleDetailWidget({super.key});
+  final String title;
+  final String content;
+
+  const ArticleDetailWidget({
+    super.key,
+    required this.title,
+    required this.content,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        Text(
+          title,
+          style: TextStyles.settingTileText,
+        ),
+        Text(
+          title,
+          style: TextStyles.inputText,
+        ),
+      ],
+    );
   }
 }
