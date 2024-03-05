@@ -6,3 +6,11 @@ sealed class WillReadBlocEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class DisplayWillReadBooks extends WillReadBlocEvent {
+  final List<BookCard>? openedBooks;
+
+  const DisplayWillReadBooks({
+    this.openedBooks,
+  });
+}
