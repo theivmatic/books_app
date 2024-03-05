@@ -10,6 +10,7 @@ class OpenedBookBloc extends Bloc<OpenedBookBlocEvent, OpenedBookBlocState> {
     var bookCards = <BookCard>[];
     on<DisplayOpenedBooks>((event, emit) {
       bookCards = event.openedBooks ?? bookCards;
+      
       emit(
         OpenedBookBlocInitialState(),
       );

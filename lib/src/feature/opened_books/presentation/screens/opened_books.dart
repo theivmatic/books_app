@@ -263,6 +263,9 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: BlocBuilder<OpenedBookBloc, OpenedBookBlocState>(
         builder: (context, state) => switch (state) {
+          OpenedBookBlocInitialState() => const Center(
+              child: CircularProgressIndicator(),
+            ),
           OpenedBookBlocLoadedState() => Stack(
               children: [
                 ListView.builder(
