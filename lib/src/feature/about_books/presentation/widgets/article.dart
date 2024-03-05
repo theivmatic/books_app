@@ -13,42 +13,45 @@ class ArticleWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
-            width: 350.w,
-            height: 140.h,
-            padding: EdgeInsets.all(
-              20.dg,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(
-                20.r,
+          InkWell(
+            onTap: () {},
+            child: Container(
+              width: 350.w,
+              height: 140.h,
+              padding: EdgeInsets.all(
+                20.dg,
               ),
-            ),
-            child: Row(
-              children: [
-                Image.asset(
-                  'assets/images/no_image.png',
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(
+                  20.r,
                 ),
-                SizedBox(
-                  width: 12.w,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Статья',
-                        style: TextStyles.labelText,
-                      ),
-                      Text(
-                        '10 лучших книг 2023 года: версия «РБК Трендов»',
-                        style: TextStyles.settingTileText,
-                      ),
-                    ],
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/images/no_image.png',
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: 12.w,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Статья',
+                          style: TextStyles.labelText,
+                        ),
+                        Text(
+                          '10 лучших книг 2023 года: версия «РБК Трендов»',
+                          style: TextStyles.settingTileText,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(
