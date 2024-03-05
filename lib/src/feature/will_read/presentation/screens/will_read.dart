@@ -79,9 +79,9 @@ class _WillReadScreenState extends State<WillReadScreen> {
   @override
   void initState() {
     getSharedPreferences();
-    // context.read<OpenedBookBloc>().add(
-    //       const DisplayOpenedBooks(),
-    //     );
+    context.read<WillReadBloc>().add(
+          const DisplayWillReadBooks(),
+        );
     super.initState();
   }
 
