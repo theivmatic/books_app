@@ -1,3 +1,4 @@
+import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ArticleDetailsScreen extends StatelessWidget {
@@ -5,6 +6,28 @@ class ArticleDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Название статьи',
+              style: TextStyles.appbarTitleText,
+            ),
+            Text(
+              'Позаголовок статьи',
+              style: TextStyles.labelText,
+            ),
+          ],
+        ),
+        centerTitle: false,
+        bottom: Tab(
+          child: Image.asset(
+            'assets/images/no_image.png',
+          ),
+        ),
+      ),
+    );
   }
 }

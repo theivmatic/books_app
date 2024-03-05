@@ -1,4 +1,5 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+import 'package:books_app/src/feature/about_books/presentation/screens/article_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,7 +15,13 @@ class ArticleWidget extends StatelessWidget {
       child: Column(
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<dynamic>(
+                  builder: (context) => const ArticleDetailsScreen(),
+                ),
+              );
+            },
             child: Container(
               width: 350.w,
               height: 140.h,
