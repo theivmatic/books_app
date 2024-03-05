@@ -22,11 +22,6 @@ class ArticleDetailsScreen extends StatelessWidget {
           ],
         ),
         centerTitle: false,
-        bottom: Tab(
-          child: Image.asset(
-            'assets/images/no_image.png',
-          ),
-        ),
       ),
     );
   }

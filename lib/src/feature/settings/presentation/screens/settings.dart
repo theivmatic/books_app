@@ -22,11 +22,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Настройки'),
+        
         titleSpacing: 20.w,
         titleTextStyle: TextStyles.appbarTitleText,
         centerTitle: false,
-        elevation: 5,
+        elevation: 0,
         shadowColor: AppColors.elevButtnShadow,
+        surfaceTintColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             20,

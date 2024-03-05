@@ -21,8 +21,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 20.w,
       titleTextStyle: TextStyles.appbarTitleText,
       centerTitle: false,
-      elevation: 5,
+      elevation: 0,
       shadowColor: AppColors.elevButtnShadow,
+      surfaceTintColor: AppColors.white,
       shape: shape,
       backgroundColor: AppColors.white,
       actions: [
