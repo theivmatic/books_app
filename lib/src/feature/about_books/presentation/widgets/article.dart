@@ -8,16 +8,53 @@ class ArticleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12.h),
-      child: Container(
-        width: 350.w,
-        height: 140.h,
-        decoration: BoxDecoration(
-          color: AppColors.yellow,
-          borderRadius: BorderRadius.circular(
-            20.r,
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.w,
+      ),
+      child: Column(
+        children: [
+          Container(
+            width: 350.w,
+            height: 140.h,
+            padding: EdgeInsets.all(
+              20.dg,
+            ),
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(
+                20.r,
+              ),
+            ),
+            child: Row(
+              children: [
+                Image.asset(
+                  'assets/images/no_image.png',
+                ),
+                SizedBox(
+                  width: 12.w,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Статья',
+                        style: TextStyles.labelText,
+                      ),
+                      Text(
+                        '10 лучших книг 2023 года: версия «РБК Трендов»',
+                        style: TextStyles.settingTileText,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+          SizedBox(
+            height: 12.h,
+          ),
+        ],
       ),
     );
   }

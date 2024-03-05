@@ -15,12 +15,22 @@ class AboutBooksScreen extends StatelessWidget {
         onPressed: () {},
       ),
       backgroundColor: AppColors.backgroundColor,
-      body: Padding(
-        padding: EdgeInsets.all(20.dg),
-        child: ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, index) => const ArticleWidget(),
-        ),
+      body: ListView.builder(
+        itemCount: 5,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: 20.h,
+                ),
+                const ArticleWidget(),
+              ],
+            );
+          } else {
+            return const ArticleWidget();
+          }
+        },
       ),
     );
   }
