@@ -7,6 +7,7 @@ import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
 import 'package:books_app/src/feature/library/presentation/screens/add_card.dart';
 import 'package:books_app/src/feature/library/presentation/widgets/card.dart';
+import 'package:books_app/src/feature/will_read/domain/bloc/will_read_bloc.dart';
 import 'package:cupertino_modal_sheet/cupertino_modal_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -258,9 +259,12 @@ class _WillReadScreenState extends State<WillReadScreen> {
         },
       ),
       backgroundColor: AppColors.backgroundColor,
-      body: const Center(
-        child: Text('Will read'),
-      ),
+      body: 
+      // const Center(
+      //   child: Text('Will read'),
+      // ),
+
+      BlocBuilder<WillReadBloc, WillReadBlocState>(builder: (context, state) {}),
     );
   }
 }
