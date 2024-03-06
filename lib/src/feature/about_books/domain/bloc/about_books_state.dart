@@ -7,10 +7,10 @@ final class AboutBooksBlocInitialState extends AboutBooksBlocState {}
 final class AboutBooksBlocLoadingState extends AboutBooksBlocState {}
 
 final class AboutBooksBlocLoadedState extends AboutBooksBlocState {
-  final ArticleEntity articleLoaded;
+  final ArticleEntity articlesLoaded;
 
   AboutBooksBlocLoadedState({
-    required this.articleLoaded,
+    required this.articlesLoaded,
   });
 }
 
