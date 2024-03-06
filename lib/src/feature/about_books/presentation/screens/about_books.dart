@@ -41,11 +41,17 @@ class _AboutBooksScreenState extends State<AboutBooksScreen> {
                       SizedBox(
                         height: 20.h,
                       ),
-                      const ArticleWidget(),
+                      ArticleWidget(
+                        // article: state.articlesLoaded,
+                        title: state.articlesLoaded.articles?[index].items?[index].title ?? 'Название статьи',
+                      ),
                     ],
                   );
                 } else {
-                  return const ArticleWidget();
+                  return ArticleWidget(
+                    // article: state.articlesLoaded,
+                    title: state.articlesLoaded.articles?[index].items?[index].title ?? 'Название статьи',
+                  );
                 }
               },
             ),

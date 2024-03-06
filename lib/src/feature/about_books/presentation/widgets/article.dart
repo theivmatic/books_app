@@ -1,11 +1,24 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+// import 'package:books_app/src/feature/about_books/domain/models/article_entity.dart';
 import 'package:books_app/src/feature/about_books/presentation/screens/article_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ArticleWidget extends StatelessWidget {
-  const ArticleWidget({super.key});
+class ArticleWidget extends StatefulWidget {
+  // final ArticleEntity article;
+  final String title;
 
+  const ArticleWidget({
+    super.key,
+    required this.title,
+    // required this.article,
+  });
+
+  @override
+  State<ArticleWidget> createState() => _ArticleWidgetState();
+}
+
+class _ArticleWidgetState extends State<ArticleWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -51,7 +64,7 @@ class ArticleWidget extends StatelessWidget {
                           style: TextStyles.labelText,
                         ),
                         Text(
-                          '10 лучших книг 2023 года: версия «РБК Трендов»',
+                          widget.title,
                           style: TextStyles.settingTileText,
                         ),
                       ],
