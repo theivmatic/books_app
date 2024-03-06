@@ -1,5 +1,6 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ArticleDetailWidget extends StatelessWidget {
   final String title;
@@ -13,17 +14,22 @@ class ArticleDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          title,
-          style: TextStyles.settingTileText,
-        ),
-        Text(
-          content,
-          style: TextStyles.inputText,
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Column(
+        children: [
+          SizedBox(height: 20.h),
+          Text(
+            title,
+            style: TextStyles.settingTileText,
+          ),
+          SizedBox(height: 12.h),
+          Text(
+            content,
+            style: TextStyles.inputText,
+          ),
+        ],
+      ),
     );
   }
 }

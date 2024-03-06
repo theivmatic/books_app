@@ -94,8 +94,10 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
                 child: ListView.builder(
                   itemCount: widget.article.articles?[0].items?.length,
                   itemBuilder: (context, index) => ArticleDetailWidget(
-                    title: widget.article.articles?[0].items?[index].title ?? '',
-                    content: widget.article.articles?[0].items?[index].text ?? '',
+                    title:
+                        widget.article.articles?[0].items?[index].title ?? '',
+                    content:
+                        widget.article.articles?[0].items?[index].text ?? '',
                   ),
                 ),
               ),
