@@ -32,9 +32,10 @@ Map<String, dynamic> _$ArticleToJson(Article instance) => <String, dynamic>{
       'items': instance.items,
     };
 
-Item _$ItemFromJson(Map<String, dynamic> json) => Item()
-  ..title = json['title'] as String?
-  ..text = json['text'] as String?;
+Item _$ItemFromJson(Map<String, dynamic> json) => Item(
+      title: json['title'] as String?,
+      text: json['text'] as String?,
+    );
 
 Map<String, dynamic> _$ItemToJson(Item instance) => <String, dynamic>{
       'title': instance.title,
