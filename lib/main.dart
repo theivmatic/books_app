@@ -2,6 +2,7 @@
 
 import 'package:books_app/src/core/bloc/observer.dart';
 import 'package:books_app/src/core/screens/splash.dart';
+import 'package:books_app/src/feature/about_books/domain/bloc/about_books_bloc.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/opened_books/domain/bloc/opened_book_bloc.dart';
 import 'package:books_app/src/feature/will_read/domain/bloc/will_read_bloc.dart';
@@ -38,6 +39,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => WillReadBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AboutBooksBloc(),
         ),
       ],
       child: ScreenUtilInit(
