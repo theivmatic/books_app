@@ -43,14 +43,14 @@ class _AboutBooksScreenState extends State<AboutBooksScreen> {
                       ),
                       ArticleWidget(
                         // article: state.articlesLoaded,
-                        title: state.articlesLoaded.articles?[index].items?[index].title ?? 'Название статьи',
+                        title: state.articlesLoaded.articles?[index].title ?? 'Название статьи',
                       ),
                     ],
                   );
                 } else {
                   return ArticleWidget(
                     // article: state.articlesLoaded,
-                    title: state.articlesLoaded.articles?[index].items?[index].title ?? 'Название статьи',
+                    title: state.articlesLoaded.articles?[index].title ?? 'Название статьи',
                   );
                 }
               },

@@ -63,9 +63,12 @@ class _ArticleWidgetState extends State<ArticleWidget> {
                           'Статья',
                           style: TextStyles.labelText,
                         ),
-                        Text(
-                          widget.title,
-                          style: TextStyles.settingTileText,
+                        Expanded(
+                          child: Text(
+                            widget.title,
+                            style: TextStyles.settingTileText,
+                            overflow: TextOverflow.clip,
+                          ),
                         ),
                       ],
                     ),
