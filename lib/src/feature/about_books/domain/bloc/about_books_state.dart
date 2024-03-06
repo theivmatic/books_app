@@ -1,10 +1,23 @@
 part of 'about_books_bloc.dart';
 
-sealed class AboutBooksState extends Equatable {
-  const AboutBooksState();
-  
-  @override
-  List<Object> get props => [];
+sealed class AboutBooksBlocState {}
+
+final class AboutBooksBlocInitialState extends AboutBooksBlocState {}
+
+final class AboutBooksBlocLoadingState extends AboutBooksBlocState {}
+
+final class AboutBooksBlocLoadedState extends AboutBooksBlocState {
+  final ArticleEntity articleLoaded;
+
+  AboutBooksBlocLoadedState({
+    required this.articleLoaded,
+  });
 }
 
-final class AboutBooksInitial extends AboutBooksState {}
+final class AboutBooksBlocErrorState extends AboutBooksBlocState {
+  final String errorMessage;
+
+  AboutBooksBlocErrorState({
+    required this.errorMessage,
+  });
+}
