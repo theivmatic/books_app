@@ -6,8 +6,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AboutBooksScreen extends StatelessWidget {
+class AboutBooksScreen extends StatefulWidget {
   const AboutBooksScreen({super.key});
+
+  @override
+  State<AboutBooksScreen> createState() => _AboutBooksScreenState();
+}
+
+class _AboutBooksScreenState extends State<AboutBooksScreen> {
+  @override
+  void initState() {
+    context.read<AboutBooksBloc>().add(
+          FetchArticlesEvent(),
+        );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
