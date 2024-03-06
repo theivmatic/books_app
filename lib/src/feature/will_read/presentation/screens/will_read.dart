@@ -152,9 +152,7 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              context
-                                                  .read<WillReadBloc>()
-                                                  .add(
+                                              context.read<WillReadBloc>().add(
                                                     DisplayWillReadBooks(
                                                       willReadBooks:
                                                           selectedBooks,
@@ -260,17 +258,12 @@ class _WillReadScreenState extends State<WillReadScreen> {
         },
       ),
       backgroundColor: AppColors.backgroundColor,
-      body:
-          // const Center(
-          //   child: Text('Will read'),
-          // ),
-
-          BlocBuilder<WillReadBloc, WillReadBlocState>(
+      body: BlocBuilder<WillReadBloc, WillReadBlocState>(
         builder: (context, state) => switch (state) {
           WillReadBlocInitialState() => const Center(
               child: CircularProgressIndicator(),
             ),
-            WillReadBlocLoadedState() => Stack(
+          WillReadBlocLoadedState() => Stack(
               children: [
                 ListView.builder(
                   itemCount: state.willReadBooks.length,
@@ -362,7 +355,9 @@ class _WillReadScreenState extends State<WillReadScreen> {
               ],
             ),
           _ => const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: AppColors.yellow,
+              ),
             ),
         },
       ),

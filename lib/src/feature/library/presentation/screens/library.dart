@@ -166,7 +166,9 @@ class _LibraryScreenState extends State<LibraryScreen> {
               }
             }
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: AppColors.yellow,
+              ),
             );
           },
         ),

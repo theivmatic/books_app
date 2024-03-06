@@ -357,7 +357,11 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                 ),
               ],
             ),
-          _ => const Center(child: CircularProgressIndicator()),
+          _ => const Center(
+              child: CircularProgressIndicator(
+                color: AppColors.yellow,
+              ),
+            ),
         },
       ),
     );

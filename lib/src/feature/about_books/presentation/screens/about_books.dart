@@ -20,7 +20,7 @@ class AboutBooksScreen extends StatelessWidget {
       body: BlocBuilder<AboutBooksBloc, AboutBooksBlocState>(
         builder: (context, state) => switch (state) {
           AboutBooksBlocLoadedState() => ListView.builder(
-              itemCount: 5,
+              itemCount: state.articlesLoaded.articles?.length,
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return Column(
@@ -37,7 +37,9 @@ class AboutBooksScreen extends StatelessWidget {
               },
             ),
           _ => const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: AppColors.yellow,
+              ),
             ),
         },
       ),
