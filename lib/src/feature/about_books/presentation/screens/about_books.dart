@@ -42,14 +42,14 @@ class _AboutBooksScreenState extends State<AboutBooksScreen> {
                         height: 20.h,
                       ),
                       ArticleWidget(
-                        // article: state.articlesLoaded,
+                        article: state.articlesLoaded,
                         title: state.articlesLoaded.articles?[index].title ?? 'Название статьи',
                       ),
                     ],
                   );
                 } else {
                   return ArticleWidget(
-                    // article: state.articlesLoaded,
+                    article: state.articlesLoaded,
                     title: state.articlesLoaded.articles?[index].title ?? 'Название статьи',
                   );
                 }

@@ -20,7 +20,7 @@ class ArticleDetailWidget extends StatelessWidget {
           style: TextStyles.settingTileText,
         ),
         Text(
-          title,
+          content,
           style: TextStyles.inputText,
         ),
       ],

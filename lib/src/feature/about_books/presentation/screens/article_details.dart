@@ -1,11 +1,22 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+import 'package:books_app/src/feature/about_books/domain/models/article_entity.dart';
 import 'package:books_app/src/feature/about_books/presentation/widgets/article_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ArticleDetailsScreen extends StatelessWidget {
-  const ArticleDetailsScreen({super.key});
+class ArticleDetailsScreen extends StatefulWidget {
+  final ArticleEntity article;
 
+  const ArticleDetailsScreen({
+    super.key,
+    required this.article,
+  });
+
+  @override
+  State<ArticleDetailsScreen> createState() => _ArticleDetailsScreenState();
+}
+
+class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +29,7 @@ class ArticleDetailsScreen extends StatelessWidget {
               style: TextStyles.appbarTitleText,
             ),
             Text(
-              'Позаголовок статьи',
+              'О книгах',
               style: TextStyles.labelText,
             ),
           ],
@@ -78,9 +89,15 @@ class ArticleDetailsScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.r),
                 color: AppColors.white,
               ),
-              child: const ArticleDetailWidget(
-                title: 'title',
-                content: 'content',
+              child: SizedBox(
+                height: 500.h,
+                child: ListView.builder(
+                  itemCount: widget.article.articles?[0].items?.length,
+                  itemBuilder: (context, index) => ArticleDetailWidget(
+                    title: widget.article.articles?[0].items?[index].title ?? '',
+                    content: widget.article.articles?[0].items?[index].text ?? '',
+                  ),
+                ),
               ),
             ),
           ],

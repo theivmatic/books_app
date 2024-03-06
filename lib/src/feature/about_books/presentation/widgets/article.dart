@@ -1,17 +1,17 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
-// import 'package:books_app/src/feature/about_books/domain/models/article_entity.dart';
+import 'package:books_app/src/feature/about_books/domain/models/article_entity.dart';
 import 'package:books_app/src/feature/about_books/presentation/screens/article_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ArticleWidget extends StatefulWidget {
-  // final ArticleEntity article;
+  final ArticleEntity article;
   final String title;
 
   const ArticleWidget({
     super.key,
     required this.title,
-    // required this.article,
+    required this.article,
   });
 
   @override
@@ -31,7 +31,9 @@ class _ArticleWidgetState extends State<ArticleWidget> {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute<dynamic>(
-                  builder: (context) => const ArticleDetailsScreen(),
+                  builder: (context) => ArticleDetailsScreen(
+                    article: widget.article,
+                  ),
                 ),
               );
             },
