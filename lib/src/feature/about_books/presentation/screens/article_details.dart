@@ -25,7 +25,7 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Название статьи',
+              widget.article.articles?[0].title ?? '',
               style: TextStyles.appbarTitleText,
             ),
             Text(
