@@ -1,5 +1,6 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/about_books/domain/bloc/about_books_bloc.dart';
+import 'package:books_app/src/feature/about_books/presentation/screens/article_details.dart';
 import 'package:books_app/src/feature/about_books/presentation/widgets/article.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,17 +49,33 @@ class _AboutBooksScreenState extends State<AboutBooksScreen> {
                         height: 20.h,
                       ),
                       ArticleWidget(
-                        article: state.articlesLoaded,
                         title: state.articlesLoaded.articles?[index].title ??
                             'Название статьи',
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute<dynamic>(
+                              builder: (context) => ArticleDetailsScreen(
+                                article: state.articlesLoaded.articles?[index],
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   );
                 } else {
                   return ArticleWidget(
-                    article: state.articlesLoaded,
                     title: state.articlesLoaded.articles?[index].title ??
                         'Название статьи',
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute<dynamic>(
+                          builder: (context) => ArticleDetailsScreen(
+                            article: state.articlesLoaded.articles?[index],
+                          ),
+                        ),
+                      );
+                    },
                   );
                 }
               },

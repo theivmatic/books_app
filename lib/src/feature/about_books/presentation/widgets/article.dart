@@ -1,24 +1,17 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
-import 'package:books_app/src/feature/about_books/domain/models/article_entity.dart';
-import 'package:books_app/src/feature/about_books/presentation/screens/article_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ArticleWidget extends StatefulWidget {
-  final ArticleEntity article;
+class ArticleWidget extends StatelessWidget {
   final String title;
+  final VoidCallback onTap;
 
   const ArticleWidget({
     super.key,
     required this.title,
-    required this.article,
+    required this.onTap,
   });
 
-  @override
-  State<ArticleWidget> createState() => _ArticleWidgetState();
-}
-
-class _ArticleWidgetState extends State<ArticleWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,15 +21,7 @@ class _ArticleWidgetState extends State<ArticleWidget> {
       child: Column(
         children: [
           InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute<dynamic>(
-                  builder: (context) => ArticleDetailsScreen(
-                    article: widget.article,
-                  ),
-                ),
-              );
-            },
+            onTap: onTap,
             child: Container(
               width: 350.w,
               height: 140.h,
@@ -67,7 +52,7 @@ class _ArticleWidgetState extends State<ArticleWidget> {
                         ),
                         Expanded(
                           child: Text(
-                            widget.title,
+                            title,
                             style: TextStyles.settingTileText,
                             overflow: TextOverflow.clip,
                           ),

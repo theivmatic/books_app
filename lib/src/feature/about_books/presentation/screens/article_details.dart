@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ArticleDetailsScreen extends StatefulWidget {
-  final ArticleEntity article;
+  final Article? article;
 
   const ArticleDetailsScreen({
     super.key,
@@ -17,6 +17,8 @@ class ArticleDetailsScreen extends StatefulWidget {
 }
 
 class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              widget.article.articles?[0].title ?? '',
+              widget.article?.title ?? '',
               style: TextStyles.appbarTitleText,
             ),
             Text(
@@ -92,12 +94,12 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
               child: SizedBox(
                 height: 500.h,
                 child: ListView.builder(
-                  itemCount: widget.article.articles?[0].items?.length,
+                  itemCount: widget.article?.items?.length,
                   itemBuilder: (context, index) => ArticleDetailWidget(
                     title:
-                        widget.article.articles?[0].items?[index].title ?? '',
+                        widget.article?.items?[index].title ?? '',
                     content:
-                        widget.article.articles?[0].items?[index].text ?? '',
+                        widget.article?.items?[index].text ?? '',
                   ),
                 ),
               ),
