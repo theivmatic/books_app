@@ -60,6 +60,7 @@ class _WillReadScreenState extends State<WillReadScreen> {
     final bookCardStringList =
         selectedBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
     storage.setStringList('BookCards', bookCardStringList);
+    setState(() {});
   }
 
   void readFromStorage() {

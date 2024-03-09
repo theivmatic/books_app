@@ -1,16 +1,21 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
+import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
+import 'package:books_app/src/feature/library/presentation/screens/edit_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class OpenedBookWidget extends StatefulWidget {
-  
   final BookCard card;
+  final VoidCallback onDelete;
 
   const OpenedBookWidget({
     super.key,
     required this.card,
+    required this.onDelete,
   });
 
   @override
@@ -49,6 +54,97 @@ class _OpenedBookWidgetState extends State<OpenedBookWidget> {
                 'assets/images/upload_image.png',
                 scale: 0.5,
                 fit: BoxFit.fill,
+              ),
+            ),
+            Positioned(
+              top: 10.h,
+              right: 10.w,
+              child: PopupMenuButton<Widget>(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Icon(
+                  Icons.keyboard_control_rounded,
+                  color: AppColors.yellow,
+                  size: 24.dg,
+                ),
+                itemBuilder: (context) => [
+                  PopupMenuItem<Widget>(
+                    onTap: () {
+                      context.read<CardBloc>().add(
+                            FetchSpecificCardEvent(
+                              id: widget.card.id ?? 0,
+                            ),
+                          );
+                      Navigator.of(context).push(
+                        MaterialPageRoute<dynamic>(
+                          builder: (context) => EditCardScreen(
+                            card: widget.card,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Редактировать',
+                      style: TextStyles.popupItemText,
+                    ),
+                  ),
+                  const PopupMenuDivider(),
+                  PopupMenuItem<Widget>(
+                    onTap: () {
+                      showCupertinoDialog<Widget>(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (_) => AlertDialog(
+                          actionsAlignment: MainAxisAlignment.spaceEvenly,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              12.r,
+                            ),
+                          ),
+                          title: Column(
+                            children: [
+                              Text(
+                                'Вы уверены, что хотите удалить карточку?',
+                                style: TextStyles.popupItemText,
+                              ),
+                              const Divider(),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: widget.onDelete,
+                              child: Text(
+                                'Удалить',
+                                style: TextStyles.popupItemText.copyWith(
+                                  color: AppColors.red,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            const VerticalDivider(),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                'Отмена',
+                                style: TextStyles.popupItemText,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Удалить',
+                      style: TextStyles.popupItemText.copyWith(
+                        color: AppColors.red,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Positioned(
@@ -116,7 +212,6 @@ class _OpenedBookWidgetState extends State<OpenedBookWidget> {
               currentStep: percent,
               minHeight: 2.h,
             ),
-            
           ],
         ),
       ),

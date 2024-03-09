@@ -61,6 +61,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
     final bookCardStringList =
         selectedBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
     storage.setStringList('BookCards', bookCardStringList);
+    setState(() {});
   }
 
   void readFromStorage() {
@@ -279,12 +280,22 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                           ),
                           OpenedBookWidget(
                             card: state.openedBooks[index],
+                            //TODO: fix delete from list function
+                            onDelete: () {
+                              selectedBooks.remove(
+                                state.openedBooks[index],
+                              );
+                              Navigator.of(context).pop();
+                            },
                           ),
                         ],
                       );
                     }
                     return OpenedBookWidget(
                       card: state.openedBooks[index],
+                      onDelete: () {
+                        Navigator.of(context).pop();
+                      },
                     );
                   },
                 ),
@@ -344,6 +355,9 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                 itemBuilder: (context, index) {
                                   return OpenedBookWidget(
                                     card: filteredList[index],
+                                    onDelete: () {
+                                      Navigator.of(context).pop();
+                                    },
                                   );
                                 },
                               );
