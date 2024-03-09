@@ -46,7 +46,7 @@ class _WillReadScreenState extends State<WillReadScreen> {
   }
 
   //Strorage
-  List<BookCard> selectedBooks = [];
+  List<BookCard> selectedWillReadBooks = [];
 
   late SharedPreferences storage;
 
@@ -58,16 +58,16 @@ class _WillReadScreenState extends State<WillReadScreen> {
 
   void saveToStorage() {
     final bookCardStringList =
-        selectedBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
-    storage.setStringList('BookCards', bookCardStringList);
+        selectedWillReadBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
+    storage.setStringList('WillReadBookCards', bookCardStringList);
     setState(() {});
   }
 
   void readFromStorage() {
-    final bookCardStringList = storage.getStringList('BookCards');
+    final bookCardStringList = storage.getStringList('WillReadBookCards');
 
     if (bookCardStringList != null) {
-      selectedBooks = bookCardStringList
+      selectedWillReadBooks = bookCardStringList
           .map(
             (bookCard) => BookCard.fromJson(
               json.decode(bookCard) as Map<String, Object?>,
@@ -156,12 +156,12 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                               context.read<WillReadBloc>().add(
                                                     DisplayWillReadBooks(
                                                       willReadBooks:
-                                                          selectedBooks,
+                                                          selectedWillReadBooks,
                                                     ),
                                                   );
                                               saveToStorage();
                                               Navigator.of(context).pop();
-                                              log(selectedBooks.toString());
+                                              log(selectedWillReadBooks.toString());
                                             },
                                             child: Text(
                                               'Готово',
@@ -195,15 +195,15 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                                       });
                                                       if (selectedValue ==
                                                           value) {
-                                                        selectedBooks.add(
+                                                        selectedWillReadBooks.add(
                                                           state.bookCard[index],
                                                         );
                                                       } else {
-                                                        if (selectedBooks
+                                                        if (selectedWillReadBooks
                                                             .contains(
                                                           state.bookCard[index],
                                                         )) {
-                                                          selectedBooks.remove(
+                                                          selectedWillReadBooks.remove(
                                                             state.bookCard[
                                                                 index],
                                                           );

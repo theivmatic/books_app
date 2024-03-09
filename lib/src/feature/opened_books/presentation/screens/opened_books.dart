@@ -47,7 +47,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
   }
 
   //Strorage
-  List<BookCard> selectedBooks = [];
+  List<BookCard> selectedOpenedBooks = [];
 
   late SharedPreferences storage;
 
@@ -59,16 +59,16 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
 
   void saveToStorage() {
     final bookCardStringList =
-        selectedBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
-    storage.setStringList('BookCards', bookCardStringList);
+        selectedOpenedBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
+    storage.setStringList('OpenedBookCards', bookCardStringList);
     setState(() {});
   }
 
   void readFromStorage() {
-    final bookCardStringList = storage.getStringList('BookCards');
+    final bookCardStringList = storage.getStringList('OpenedBookCards');
 
     if (bookCardStringList != null) {
-      selectedBooks = bookCardStringList
+      selectedOpenedBooks = bookCardStringList
           .map(
             (bookCard) => BookCard.fromJson(
               json.decode(bookCard) as Map<String, Object?>,
@@ -159,12 +159,12 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                   .add(
                                                     DisplayOpenedBooks(
                                                       openedBooks:
-                                                          selectedBooks,
+                                                          selectedOpenedBooks,
                                                     ),
                                                   );
                                               saveToStorage();
                                               Navigator.of(context).pop();
-                                              log(selectedBooks.toString());
+                                              log(selectedOpenedBooks.toString());
                                             },
                                             child: Text(
                                               'Готово',
@@ -198,15 +198,15 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                       });
                                                       if (selectedValue ==
                                                           value) {
-                                                        selectedBooks.add(
+                                                        selectedOpenedBooks.add(
                                                           state.bookCard[index],
                                                         );
                                                       } else {
-                                                        if (selectedBooks
+                                                        if (selectedOpenedBooks
                                                             .contains(
                                                           state.bookCard[index],
                                                         )) {
-                                                          selectedBooks.remove(
+                                                          selectedOpenedBooks.remove(
                                                             state.bookCard[
                                                                 index],
                                                           );
@@ -282,7 +282,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                             card: state.openedBooks[index],
                             //TODO: fix delete from list function
                             onDelete: () {
-                              selectedBooks.remove(
+                              selectedOpenedBooks.remove(
                                 state.openedBooks[index],
                               );
                               Navigator.of(context).pop();
