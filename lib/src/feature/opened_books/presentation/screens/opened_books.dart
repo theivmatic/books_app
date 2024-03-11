@@ -54,12 +54,14 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
   Future<dynamic> getSharedPreferences() async {
     storage = await SharedPreferences.getInstance();
     readFromStorage();
+    log('storage: $selectedOpenedBooks');
     setState(() {});
   }
 
   void saveToStorage() {
-    final bookCardStringList =
-        selectedOpenedBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
+    final bookCardStringList = selectedOpenedBooks
+        .map((bookCard) => jsonEncode(bookCard.toJson()))
+        .toList();
     storage.setStringList('OpenedBookCards', bookCardStringList);
     setState(() {});
   }
@@ -131,14 +133,18 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                           Wrap(
                                             children: [
                                               IconButton(
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
                                                 icon: const Icon(
                                                   Icons.arrow_back_ios,
                                                   color: AppColors.yellow,
                                                 ),
                                               ),
                                               TextButton(
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
                                                 child: Text(
                                                   'Назад',
                                                   style: TextStyles
@@ -164,7 +170,9 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                   );
                                               saveToStorage();
                                               Navigator.of(context).pop();
-                                              log(selectedOpenedBooks.toString());
+                                              log(
+                                                selectedOpenedBooks.toString(),
+                                              );
                                             },
                                             child: Text(
                                               'Готово',
@@ -206,7 +214,8 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                             .contains(
                                                           state.bookCard[index],
                                                         )) {
-                                                          selectedOpenedBooks.remove(
+                                                          selectedOpenedBooks
+                                                              .remove(
                                                             state.bookCard[
                                                                 index],
                                                           );
@@ -283,8 +292,11 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                             //TODO: fix delete from list function
                             onDelete: () {
                               selectedOpenedBooks.remove(
-                                state.openedBooks[index],
+                                selectedOpenedBooks[index],
                               );
+                              saveToStorage();
+                              // storage.reload();
+                              setState(() {});
                               Navigator.of(context).pop();
                             },
                           ),
@@ -294,6 +306,12 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                     return OpenedBookWidget(
                       card: state.openedBooks[index],
                       onDelete: () {
+                        selectedOpenedBooks.remove(
+                          selectedOpenedBooks[index],
+                        );
+                        // storage.reload();
+                        saveToStorage();
+                        setState(() {});
                         Navigator.of(context).pop();
                       },
                     );
