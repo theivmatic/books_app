@@ -288,7 +288,6 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                 selectedWillReadBooks[index],
                               );
                               saveToStorage();
-                              // storage.reload();
                               setState(() {});
                               Navigator.of(context).pop();
                             },
@@ -303,7 +302,6 @@ class _WillReadScreenState extends State<WillReadScreen> {
                           selectedWillReadBooks[index],
                         );
                         saveToStorage();
-                        // storage.reload();
                         setState(() {});
                         Navigator.of(context).pop();
                       },

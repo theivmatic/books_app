@@ -304,13 +304,11 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                           ),
                           OpenedBookWidget(
                             card: state.openedBooks[index],
-                            //TODO: fix delete from list function
                             onDelete: () {
                               selectedOpenedBooks.remove(
                                 selectedOpenedBooks[index],
                               );
                               saveToStorage();
-                              // storage.reload();
                               setState(() {});
                               Navigator.of(context).pop();
                             },
@@ -324,7 +322,6 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                         selectedOpenedBooks.remove(
                           selectedOpenedBooks[index],
                         );
-                        // storage.reload();
                         saveToStorage();
                         setState(() {});
                         Navigator.of(context).pop();
