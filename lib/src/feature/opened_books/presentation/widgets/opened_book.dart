@@ -1,6 +1,7 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
+import 'package:books_app/src/feature/library/presentation/screens/card_details.dart';
 import 'package:books_app/src/feature/library/presentation/screens/edit_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,15 @@ class _OpenedBookWidgetState extends State<OpenedBookWidget> {
         vertical: 10.h,
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute<dynamic>(
+              builder: (context) => CardDetailsScreen(
+                card: widget.card,
+              ),
+            ),
+          );
+        },
         child: Stack(
           alignment: Alignment.center,
           children: [
