@@ -225,6 +225,21 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                   ),
                                                   CardWidget(
                                                     card: state.bookCard[index],
+                                                    onDelete: () {
+                                                      context
+                                                          .read<CardBloc>()
+                                                          .add(
+                                                            DeleteCardEvent(
+                                                              id: state
+                                                                      .bookCard[
+                                                                          index]
+                                                                      .id ??
+                                                                  0,
+                                                            ),
+                                                          );
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
                                                   ),
                                                 ],
                                               ),

@@ -85,12 +85,28 @@ class _LibraryScreenState extends State<LibraryScreen> {
                               ),
                               CardWidget(
                                 card: state.bookCard[index],
+                                onDelete: () {
+                                  context.read<CardBloc>().add(
+                                        DeleteCardEvent(
+                                          id: state.bookCard[index].id ?? 0,
+                                        ),
+                                      );
+                                  Navigator.of(context).pop();
+                                },
                               ),
                             ],
                           );
                         }
                         return CardWidget(
                           card: state.bookCard[index],
+                          onDelete: () {
+                            context.read<CardBloc>().add(
+                                  DeleteCardEvent(
+                                    id: state.bookCard[index].id ?? 0,
+                                  ),
+                                );
+                            Navigator.of(context).pop();
+                          },
                         );
                       },
                     ),
@@ -150,6 +166,16 @@ class _LibraryScreenState extends State<LibraryScreen> {
                                     itemBuilder: (context, index) {
                                       return CardWidget(
                                         card: filteredList[index],
+                                        onDelete: () {
+                                          context.read<CardBloc>().add(
+                                                DeleteCardEvent(
+                                                  id: state
+                                                          .bookCard[index].id ??
+                                                      0,
+                                                ),
+                                              );
+                                          Navigator.of(context).pop();
+                                        },
                                       );
                                     },
                                   );

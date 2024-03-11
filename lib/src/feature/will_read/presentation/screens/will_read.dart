@@ -53,12 +53,14 @@ class _WillReadScreenState extends State<WillReadScreen> {
   Future<dynamic> getSharedPreferences() async {
     storage = await SharedPreferences.getInstance();
     readFromStorage();
+    log('storage: $selectedWillReadBooks');
     setState(() {});
   }
 
   void saveToStorage() {
-    final bookCardStringList =
-        selectedWillReadBooks.map((bookCard) => jsonEncode(bookCard.toJson())).toList();
+    final bookCardStringList = selectedWillReadBooks
+        .map((bookCard) => jsonEncode(bookCard.toJson()))
+        .toList();
     storage.setStringList('WillReadBookCards', bookCardStringList);
     setState(() {});
   }
@@ -161,7 +163,8 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                                   );
                                               saveToStorage();
                                               Navigator.of(context).pop();
-                                              log(selectedWillReadBooks.toString());
+                                              log(selectedWillReadBooks
+                                                  .toString());
                                             },
                                             child: Text(
                                               'Готово',
@@ -195,7 +198,8 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                                       });
                                                       if (selectedValue ==
                                                           value) {
-                                                        selectedWillReadBooks.add(
+                                                        selectedWillReadBooks
+                                                            .add(
                                                           state.bookCard[index],
                                                         );
                                                       } else {
@@ -203,7 +207,8 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                                             .contains(
                                                           state.bookCard[index],
                                                         )) {
-                                                          selectedWillReadBooks.remove(
+                                                          selectedWillReadBooks
+                                                              .remove(
                                                             state.bookCard[
                                                                 index],
                                                           );
@@ -213,6 +218,7 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                                   ),
                                                   CardWidget(
                                                     card: state.bookCard[index],
+                                                    onDelete: () {},
                                                   ),
                                                 ],
                                               ),
@@ -277,12 +283,30 @@ class _WillReadScreenState extends State<WillReadScreen> {
                           ),
                           CardWidget(
                             card: state.willReadBooks[index],
+                            onDelete: () {
+                              selectedWillReadBooks.remove(
+                                selectedWillReadBooks[index],
+                              );
+                              saveToStorage();
+                              // storage.reload();
+                              setState(() {});
+                              Navigator.of(context).pop();
+                            },
                           ),
                         ],
                       );
                     }
                     return CardWidget(
                       card: state.willReadBooks[index],
+                      onDelete: () {
+                        selectedWillReadBooks.remove(
+                          selectedWillReadBooks[index],
+                        );
+                        saveToStorage();
+                        // storage.reload();
+                        setState(() {});
+                        Navigator.of(context).pop();
+                      },
                     );
                   },
                 ),
@@ -342,6 +366,7 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                 itemBuilder: (context, index) {
                                   return CardWidget(
                                     card: filteredList[index],
+                                    onDelete: () {},
                                   );
                                 },
                               );

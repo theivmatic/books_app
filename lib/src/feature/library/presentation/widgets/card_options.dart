@@ -9,10 +9,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CardOptionsWidget extends StatefulWidget {
   final CardWidget widget;
+  final VoidCallback onDelete;
 
   const CardOptionsWidget({
     super.key,
     required this.widget,
+    required this.onDelete,
   });
 
   @override
@@ -76,14 +78,7 @@ class _CardOptionsWidgetState extends State<CardOptionsWidget> {
                 ),
                 actions: [
                   TextButton(
-                    onPressed: () {
-                      context.read<CardBloc>().add(
-                            DeleteCardEvent(
-                              id: widget.widget.card.id ?? 0,
-                            ),
-                          );
-                      Navigator.of(context).pop();
-                    },
+                    onPressed: widget.onDelete,
                     child: Text(
                       'Удалить',
                       style: TextStyles.popupItemText.copyWith(

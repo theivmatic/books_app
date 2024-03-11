@@ -7,10 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CardWidget extends StatefulWidget {
   final BookCard card;
+  final VoidCallback onDelete;
 
   const CardWidget({
     super.key,
     required this.card,
+    required this.onDelete,
   });
 
   @override
@@ -85,6 +87,7 @@ class _CardWidgetState extends State<CardWidget> {
                 ),
                 CardOptionsWidget(
                   widget: widget,
+                  onDelete: widget.onDelete,
                 ),
               ],
             ),

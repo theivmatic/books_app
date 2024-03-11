@@ -1,8 +1,10 @@
 import 'package:books_app/src/core/constants/app_theme.dart';
 import 'package:books_app/src/feature/library/data/cards_db.dart';
+import 'package:books_app/src/feature/library/domain/bloc/card_bloc.dart';
 import 'package:books_app/src/feature/library/domain/models/card.dart';
 import 'package:books_app/src/feature/library/presentation/widgets/card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchBarWidget extends StatefulWidget {
@@ -93,6 +95,14 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                       ),
                       child: CardWidget(
                         card: widget.card,
+                        onDelete: () {
+                          context.read<CardBloc>().add(
+                                DeleteCardEvent(
+                                  id: widget.card.id ?? 0,
+                                ),
+                              );
+                          Navigator.of(context).pop();
+                        },
                       ),
                     );
                   },
