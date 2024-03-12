@@ -54,7 +54,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
   Future<dynamic> getSharedPreferences() async {
     storage = await SharedPreferences.getInstance();
     readFromStorage();
-    log('storage: $selectedOpenedBooks');
+    log('STORAGE: $selectedOpenedBooks');
     setState(() {});
   }
 
@@ -85,8 +85,9 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
   void initState() {
     getSharedPreferences();
     context.read<OpenedBookBloc>().add(
-          const DisplayOpenedBooks(),
+          DisplayOpenedBooks(openedBooks: selectedOpenedBooks),
         );
+    log('SELECTEDBOOKS: $selectedOpenedBooks');
     super.initState();
   }
 
@@ -170,9 +171,6 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                   );
                                               saveToStorage();
                                               Navigator.of(context).pop();
-                                              log(
-                                                selectedOpenedBooks.toString(),
-                                              );
                                             },
                                             child: Text(
                                               'Готово',
@@ -212,13 +210,15 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
                                                       } else {
                                                         if (selectedOpenedBooks
                                                             .contains(
-                                                          state.bookCard[index],
+                                                          selectedOpenedBooks[
+                                                              index],
                                                         )) {
                                                           selectedOpenedBooks
                                                               .remove(
-                                                            state.bookCard[
+                                                            selectedOpenedBooks[
                                                                 index],
                                                           );
+                                                          saveToStorage();
                                                         }
                                                       }
                                                     },

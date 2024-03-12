@@ -84,7 +84,7 @@ class _WillReadScreenState extends State<WillReadScreen> {
   void initState() {
     getSharedPreferences();
     context.read<WillReadBloc>().add(
-          const DisplayWillReadBooks(),
+          DisplayWillReadBooks(willReadBooks: selectedWillReadBooks),
         );
     super.initState();
   }
@@ -163,8 +163,10 @@ class _WillReadScreenState extends State<WillReadScreen> {
                                                   );
                                               saveToStorage();
                                               Navigator.of(context).pop();
-                                              log(selectedWillReadBooks
-                                                  .toString());
+                                              log(
+                                                selectedWillReadBooks
+                                                    .toString(),
+                                              );
                                             },
                                             child: Text(
                                               'Готово',
