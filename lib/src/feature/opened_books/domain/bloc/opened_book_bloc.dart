@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:books_app/src/feature/library/domain/models/card.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,15 +10,11 @@ class OpenedBookBloc extends Bloc<OpenedBookBlocEvent, OpenedBookBlocState> {
     var bookCards = <BookCard>[];
     on<DisplayOpenedBooks>((event, emit) {
       bookCards = event.openedBooks ?? bookCards;
-
       emit(
         OpenedBookBlocInitialState(),
       );
       emit(
         OpenedBookBlocLoadedState(openedBooks: bookCards),
-      );
-      log(
-        'BOOKCARDS: $bookCards',
       );
     });
   }

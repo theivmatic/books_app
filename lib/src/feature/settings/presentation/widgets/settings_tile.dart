@@ -50,6 +50,7 @@ class SettingsTileWidget extends StatelessWidget {
             Text(
               tileText,
               style: TextStyles.settingTileText,
+              overflow: TextOverflow.clip,
             ),
             const Icon(
               Icons.arrow_forward_ios,

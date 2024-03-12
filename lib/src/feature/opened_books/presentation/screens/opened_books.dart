@@ -53,9 +53,11 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
 
   Future<dynamic> getSharedPreferences() async {
     storage = await SharedPreferences.getInstance();
-    readFromStorage();
+    final govno = readFromStorage();
     log('STORAGE: $selectedOpenedBooks');
     setState(() {});
+    log('GOVNO: $govno');
+    return govno;
   }
 
   void saveToStorage() {
@@ -66,7 +68,7 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
     setState(() {});
   }
 
-  void readFromStorage() {
+  List<BookCard> readFromStorage() {
     final bookCardStringList = storage.getStringList('OpenedBookCards');
 
     if (bookCardStringList != null) {
@@ -79,15 +81,18 @@ class _OpenedBooksScreenState extends State<OpenedBooksScreen> {
           .toList();
     }
     setState(() {});
+    log('KEK: $selectedOpenedBooks');
+    return selectedOpenedBooks;
   }
 
   @override
   void initState() {
     getSharedPreferences();
     context.read<OpenedBookBloc>().add(
-          DisplayOpenedBooks(openedBooks: selectedOpenedBooks),
+          DisplayOpenedBooks(
+            // openedBooks: ,
+          ),
         );
-    log('SELECTEDBOOKS: $selectedOpenedBooks');
     super.initState();
   }
 
